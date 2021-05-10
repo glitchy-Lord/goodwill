@@ -1,0 +1,136 @@
+.bg {
+	background-image: url(../images/eugene-chystiakov-YElySQuyUV4-unsplashedit.jpg);
+	position: relative;
+	// height: fit-content;
+	height: min-content;
+	// background-size: cover;
+	background-size: cover;
+	background-position: center center;
+	background-blend-mode: multiply;
+	z-index: 1;
+	overflow: hidden;
+
+	&::after {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
+		z-index: -1;
+		background: linear-gradient(rgba($black, 0.7), rgba($black, 1));
+	}
+
+	.hero {
+		position: relative;
+		margin: 0 5%;
+		// padding: 40vh 0;
+
+		height: 100vh;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		// top: 50%;
+		// transform: translateY(-50%);
+
+		&__heading,
+		&__sub-heading {
+			font-family: $heading;
+		}
+
+		&__heading {
+			font-size: size(xl);
+		}
+
+		&__sub-heading {
+			font-size: size(r);
+		}
+
+		&__cta {
+			display: flex;
+		}
+
+		&__btn--primary {
+			@include primary-btn;
+		}
+
+		&__btn--secondary {
+			@include secondary-btn;
+		}
+	}
+}
+
+.featured-listings {
+	// display: flex;
+	// width: 100%;
+	.listings__title {
+		margin: 0 7%;
+		font-size: size(s);
+		text-align: center;
+		margin-bottom: 2.8rem;
+		letter-spacing: 0.16em;
+	}
+	.card {
+		// width: 90%;
+		margin: 0 10%;
+		border: 2px solid rgba($white, 0.5);
+		border-radius: 1rem;
+		margin-bottom: 3rem;
+		@include glass-bg;
+		padding: 1.6rem;
+
+		&__img {
+			width: 100%;
+			border-radius: 1rem;
+		}
+
+		&__price {
+			font-size: size(s);
+			margin: 1.6rem 0;
+		}
+
+		&__location,
+		&__subtitle {
+			font-size: size(xxs-m);
+		}
+
+		&__location {
+			margin-bottom: 1.2rem;
+		}
+
+		&__subtitle {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			grid-template-rows: 1fr 1fr;
+		}
+		&__bedroom {
+			grid-column: span 1;
+		}
+
+		&__area {
+			grid-column: span 1;
+		}
+
+		&__cta {
+			@include secondary-btn;
+			border-width: 1px;
+			font-weight: weight(regular);
+			color: $white;
+			grid-row: span 2;
+			margin: 0 0 0 4rem;
+			padding: 0.5em 0;
+			text-align: center;
+			font-size: size(xxs-m);
+		}
+	}
+
+	.listings__cta {
+		display: flex;
+		justify-content: center;
+		padding-bottom: 18rem;
+		a {
+			@include primary-btn;
+			margin: 0;
+		}
+	}
+}

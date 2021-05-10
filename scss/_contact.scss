@@ -1,0 +1,90 @@
+.contact-form {
+	position: relative;
+	width: 80%;
+	margin: auto;
+	padding-top: calc(8vh + 4rem);
+	padding-bottom: calc(8vh + 4rem);
+	font-size: size(xs);
+
+	form {
+		@include glass-bg;
+		padding: 4rem 17rem;
+		border-radius: 1.8rem;
+		display: grid;
+		grid-template-areas:
+			'heading heading'
+			'name phone-number'
+			'email email'
+			'property-type type'
+			'btn btn';
+
+		line-height: 30px;
+	}
+
+	input,
+	select,
+	option {
+		font-size: size(xs);
+		width: 36rem;
+		padding: 1.5rem 2rem;
+		border-radius: 1rem;
+		border: none;
+		color: $black;
+	}
+
+	.default {
+		color: $gray;
+	}
+
+	h2 {
+		font-size: size(l);
+		font-weight: weight(semi-bold);
+		grid-area: heading;
+		text-align: center;
+		margin-bottom: 2rem;
+	}
+
+	&__name {
+		grid-area: name;
+		margin-bottom: 1rem;
+	}
+
+	&__phone {
+		grid-area: phone-number;
+		margin-left: 2.5rem;
+		margin-bottom: 1rem;
+	}
+
+	&__email {
+		grid-area: email;
+		margin-bottom: 1rem;
+
+		input {
+			width: 74.6rem;
+		}
+	}
+
+	&__property-type {
+		grid-area: property-type;
+	}
+
+	&__type {
+		grid-area: type;
+		margin-left: 2.5rem;
+	}
+
+	&__btn {
+		@include primary-btn;
+		grid-area: btn;
+		width: fit-content;
+		height: fit-content;
+		margin: auto;
+		margin-top: 8rem;
+		padding-top: 0.75em;
+		padding-bottom: 0.75em;
+	}
+}
+
+// .bg-gradiend--contact-form {
+// 	height: 100vh;
+// }

@@ -1,0 +1,96 @@
+@mixin primary-btn {
+	display: inline-block;
+	font-size: size(xxs);
+	padding: 1em 2em;
+	margin-top: 2em;
+	margin-right: 1em;
+	border: 2px solid;
+	border-radius: 0.4em;
+	font-weight: weight(semi-bold);
+
+	background-color: $accent-color;
+	border-color: $accent-color;
+	transition: all 0.2s ease-in;
+
+	&:hover,
+	&:active,
+	&:focus {
+		transform: scale(1.05);
+	}
+
+	@include desktop-lg {
+		font-size: size(xs);
+	}
+}
+@mixin secondary-btn {
+	display: inline-block;
+	font-size: size(xxs);
+	padding: 1em 2em;
+	margin-top: 2em;
+	margin-right: 1em;
+	border: 2px solid;
+	border-radius: 0.4em;
+	font-weight: weight(semi-bold);
+
+	color: $accent-color;
+	border-color: $accent-color;
+	transition: all 0.2s ease-in;
+
+	&:hover,
+	&:active,
+	&:focus {
+		transform: scale(1.05);
+	}
+
+	@include desktop-lg {
+		font-size: size(xs);
+	}
+}
+
+@mixin flexcenter($direction) {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: $direction;
+}
+
+@mixin gradient-bg {
+	background: linear-gradient($black, $primary-color, $secondary-color);
+}
+
+@mixin glass-bg {
+	background-image: linear-gradient(
+		135deg,
+		rgba($white, 0.4),
+		rgba($white, 0.05)
+	);
+}
+
+// footer
+
+@mixin footer-hover {
+	transform: translateX(1rem);
+}
+
+// media queries
+
+@mixin tablet {
+	@media (min-width: #{$tablet}) {
+		@content;
+	}
+}
+@mixin desktop-md {
+	@media (min-width: #{$desktop-md}) {
+		@content;
+	}
+}
+@mixin desktop-lg {
+	@media (min-width: #{$desktop-lg}) {
+		@content;
+	}
+}
+@mixin desktop-xl {
+	@media (min-width: #{$desktop-xl}) {
+		@content;
+	}
+}

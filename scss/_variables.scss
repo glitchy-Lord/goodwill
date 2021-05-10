@@ -1,0 +1,32 @@
+$black: #000000;
+$primary-color: #14213d;
+$secondary-color: #119da4;
+$accent-color: #fe4900;
+$gray: #797b84;
+$light-gray: #e5e5e5;
+$text-color: #fdfffc;
+$white: #fff;
+
+$heading: Merriweather;
+
+$font-size: (
+	'xxs': 1rem,
+	'xxs-m': 1.2rem,
+	'xs': 1.6rem,
+	's': 2rem,
+	'r': 2.4rem,
+	'l': 2.8rem,
+	'xl': 3.2rem,
+	'xxl': 4rem,
+	'heading': 4.8rem,
+);
+
+$font-weight: (
+	'regular': 400,
+	'semi-bold': 600,
+);
+
+$tablet: 575px;
+$desktop-md: 800px;
+$desktop-lg: 1088px;
+$desktop-xl: 1600px;

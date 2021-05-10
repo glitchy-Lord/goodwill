@@ -1,0 +1,131 @@
+@import './variables';
+@import './resets';
+@import './functions';
+@import './mixins';
+@import './navbar';
+@import './footer';
+@import './landingPage';
+@import './listings';
+@import './show';
+@import './about';
+@import './contact';
+@import './responsive';
+
+:root {
+	--marquee-width: 100%;
+	--marquee-height: fit-content;
+	// --marquee-elements: 9;
+	--marquee-animation-duration: calc(var(--marquee-elements) * 2s);
+	--marquee-elements-displayed: 5;
+	--marquee-element-width: calc(
+		var(--marquee-width) / var(--marquee-elements-displayed)
+	);
+}
+
+// ============================
+// ========== SOCIAL ==========
+// ============================
+
+.social {
+	background-color: $black;
+
+	p {
+		font-size: size(s);
+		text-align: center;
+		letter-spacing: 0.16em;
+		margin-bottom: 4rem;
+	}
+
+	&__container {
+		margin-bottom: 4rem;
+		background-color: $black;
+	}
+
+	.marquee {
+		width: var(--marquee-width);
+		height: var(--marquee-height);
+		background-color: $white;
+		overflow: hidden;
+
+		&__content {
+			height: 100%;
+			display: flex;
+			animation: scrolling var(--marquee-animation-duration) linear infinite;
+
+			&:hover {
+				animation-play-state: paused;
+			}
+		}
+
+		@keyframes scrolling {
+			0% {
+				transform: translateX(0);
+			}
+			100% {
+				transform: translateX(
+					calc(-1 * var(--marquee-element-width) * var(--marquee-elements))
+				);
+			}
+		}
+
+		li a {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-shrink: 0;
+			// width: var(--marquee-element-width);
+			max-height: 100%;
+			white-space: nowrap;
+			color: $black;
+			font-size: size(l);
+			font-weight: weight(semi-bold);
+			width: fit-content;
+			padding: 1em 1em;
+
+			&:hover {
+				transform: scale(1.05);
+			}
+		}
+	}
+
+	&__cta {
+		display: flex;
+		justify-content: center;
+
+		a {
+			@include secondary-btn;
+			font-size: size(xxs-m);
+			margin: 0;
+		}
+	}
+}
+
+// ============================
+// =========== CTA ============
+// ============================
+
+.big-cta {
+	height: 100vh;
+	@include gradient-bg;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+
+	p {
+		margin-top: auto;
+		margin-bottom: 4rem;
+		font-size: size(xl);
+		// width: 100%;
+		text-align: center;
+		font-weight: weight(semi-bold);
+		letter-spacing: 0.16em;
+	}
+
+	a {
+		@include primary-btn;
+		margin: 4.5rem 0 auto;
+		font-size: size(xs);
+	}
+}

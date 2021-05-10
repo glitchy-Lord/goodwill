@@ -1,0 +1,281 @@
+// ============================
+// ========== FOOTER ==========
+// ============================
+
+.footer {
+	background: $secondary-color;
+	width: 100%;
+	min-height: 20rem;
+	font-size: size(xxs-m);
+
+	&__container {
+		display: grid;
+		grid-template-areas:
+			'brand'
+			'links'
+			'social-links'
+			'newsletter'
+			'contact';
+		width: 100%;
+		max-width: $desktop-lg;
+		min-height: 20rem;
+		margin: auto;
+		align-self: center;
+	}
+
+	.brand {
+		grid-area: brand;
+
+		@include flexcenter(row);
+		font-family: $heading;
+		font-weight: weight(semi-bold);
+		font-size: size(xs);
+		padding-bottom: 3em;
+
+		a {
+			color: $black;
+		}
+
+		&:hover {
+			@include footer-hover;
+		}
+	}
+
+	&-links {
+		grid-area: links;
+		@include flexcenter(row);
+		padding-bottom: 3em;
+
+		ul {
+			@include flexcenter(column);
+		}
+
+		li {
+			margin-bottom: 0.3em;
+			text-align: center;
+			display: inline-block;
+
+			&:hover {
+				@include footer-hover;
+			}
+		}
+	}
+
+	&__social-links {
+		grid-area: social-links;
+		@include flexcenter(row);
+		padding-bottom: 3em;
+
+		ul {
+			@include flexcenter(column);
+		}
+
+		li {
+			margin-bottom: 0.3em;
+			text-align: center;
+			display: inline-block;
+
+			&:hover {
+				@include footer-hover;
+			}
+		}
+	}
+
+	.newsletter {
+		grid-area: newsletter;
+		@include flexcenter(column);
+		padding-bottom: 3em;
+
+		p {
+			margin-bottom: 2em;
+		}
+
+		&__email {
+			position: relative;
+		}
+
+		input {
+			padding: 0.5em 0;
+			font-size: size(xxs-m);
+			// border-radius: 0.4em;
+			border: none;
+			border-bottom: 1px solid #fff;
+			background: transparent;
+			outline: none;
+			color: $text-color;
+		}
+
+		label {
+			position: absolute;
+
+			top: -2em;
+			left: 0;
+			// display: block;
+			padding: 1em 0;
+			pointer-events: none;
+
+			transition: 0.3s;
+		}
+
+		button {
+			@include primary-btn;
+			background-color: $black;
+			padding: 0.5em 1.5em;
+			margin: 0;
+			border-color: $black;
+		}
+	}
+
+	.contact {
+		grid-area: contact;
+		@include flexcenter(column);
+
+		padding-bottom: 3em;
+
+		p {
+			margin-bottom: 0.3em;
+		}
+	}
+}
+
+// ============================
+// ======== RESPONSIVE ========
+// ============================
+
+.footer {
+	@include tablet {
+		&__container {
+			grid-template-areas:
+				'brand contact'
+				'links social-links'
+				'newsletter newsletter';
+			padding-bottom: 6.4rem;
+			font-size: size(xs);
+		}
+
+		.brand {
+			font-size: size(l);
+			display: block;
+			grid-area: brand;
+			padding-bottom: 0;
+			margin-right: auto;
+			margin-left: 11%;
+		}
+
+		&-links {
+			grid-area: links;
+			display: block;
+			padding-bottom: 0;
+			margin-left: 11%;
+			margin-top: 3.5rem;
+
+			ul {
+				@include flexcenter(column);
+				align-items: flex-start;
+			}
+
+			li {
+				text-align: left;
+			}
+		}
+
+		&__social-links {
+			grid-area: social-links;
+			display: block;
+			padding-bottom: 0;
+			margin-left: 11%;
+			margin-top: 3.5rem;
+
+			ul {
+				@include flexcenter(column);
+				align-items: flex-start;
+			}
+
+			li {
+				text-align: left;
+			}
+		}
+
+		.newsletter {
+			grid-area: newsletter;
+			display: block;
+			padding-bottom: 0;
+			margin-top: 3.5rem;
+			margin-left: 5%;
+
+			input {
+				font-size: size(xs);
+				width: 85%;
+			}
+
+			button {
+				font-size: size(xxs-m);
+			}
+		}
+
+		.contact {
+			grid-area: contact;
+			display: block;
+			padding-bottom: 0;
+			margin-right: auto;
+			margin-left: 11%;
+		}
+	}
+
+	@include desktop-md {
+		&__container {
+			grid-template-areas:
+				'brand links social-links'
+				'contact newsletter newsletter';
+			padding-bottom: 7.4rem;
+		}
+
+		&-links {
+			margin-top: 0;
+			margin-left: 0;
+		}
+
+		&__social-links {
+			margin-top: 0;
+
+			li {
+				text-align: left;
+			}
+		}
+
+		.newsletter {
+			margin-top: 2rem;
+			margin-left: 0;
+		}
+
+		.contact {
+			margin-right: auto;
+			margin-top: 2rem;
+		}
+	}
+
+	@include desktop-lg {
+		&__container {
+			grid-template-areas: 'brand links social-links newsletter contact';
+		}
+
+		.brand,
+		&__social-links {
+			margin-left: 0;
+		}
+
+		.newsletter {
+			justify-self: center;
+			margin-top: 0;
+
+			input {
+				width: initial;
+			}
+		}
+
+		.contact {
+			justify-self: flex-end;
+			margin-top: 0;
+		}
+	}
+}

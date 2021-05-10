@@ -1,0 +1,247 @@
+.bg-gradient {
+	@include gradient-bg;
+}
+
+#map {
+	// position: relative;
+	// top: 8vh;
+	width: 100%;
+	max-width: $desktop-lg;
+	height: 60vh;
+	margin: 0 auto 5rem auto;
+	padding-top: 8vh;
+
+	img {
+		height: 100%;
+		width: 100%;
+	}
+}
+
+// ============================
+// ==== FEATURED LISTINGS =====
+// ============================
+
+.featured-listings {
+	// .all-listings {
+	//
+	.card {
+		//
+		@include tablet {
+			//
+			margin: 0 10% 3rem 10%;
+			@include flexcenter(row);
+
+			&__container {
+				@include flexcenter(column);
+
+				width: 150%;
+				margin-left: 1rem;
+			}
+
+			// &__img {
+			// width: 100%;
+			// }
+
+			&__price {
+				margin-bottom: 0.8em;
+				font-size: size(r);
+			}
+
+			&__subtitle {
+				width: 100%;
+			}
+
+			&__location {
+				margin-bottom: 2em;
+				font-size: size(xs);
+			}
+
+			&__cta {
+				margin: 0;
+				margin-left: 2rem;
+			}
+		}
+
+		@include desktop-md {
+			//
+			// @include flexcenter(column);
+
+			max-width: 70%;
+			margin: auto;
+			margin-bottom: 3rem;
+
+			&__container {
+				max-width: fit-content;
+				// margin: 0;
+			}
+
+			&__subtitle {
+				grid-template-areas:
+					'bedroom bedroom'
+					'area area'
+					'cta cta';
+			}
+
+			&__bedroom {
+				grid-area: bedroom;
+			}
+
+			&__area {
+				grid-area: area;
+			}
+
+			&__cta {
+				grid-area: cta;
+				margin-left: 0;
+				margin-top: 1em;
+			}
+		}
+	}
+
+	.listings__title {
+		@include desktop-md {
+			margin-bottom: 3.8rem;
+		}
+	}
+
+	@include desktop-lg {
+		// @include flexcenter(row);
+		display: grid;
+		grid-template-areas:
+			'heading'
+			'card-container'
+			'cta';
+
+		.listings__title {
+			grid-area: heading;
+			font-size: size(r);
+		}
+		.listings__container {
+			grid-area: card-container;
+			@include flexcenter(row);
+			max-width: $desktop-lg;
+			margin: auto;
+
+			// margin: 0 5%;
+			.card {
+				@include flexcenter(column);
+				// width: 100%;
+				// margin: 0;
+				// margin: auto;
+				margin-bottom: 4rem;
+				max-width: 31.6rem;
+
+				&:not(:nth-of-type(3)) {
+					margin-right: 7rem;
+				}
+				// grid-area: card;
+
+				&__container {
+					margin-left: 0;
+					max-width: none;
+					width: 100%;
+					align-items: flex-start;
+				}
+
+				&__subtitle {
+					grid-template-areas:
+						'bedroom cta'
+						'area cta';
+					font-size: size(xs);
+				}
+
+				&__cta {
+					grid-area: cta;
+					margin: 0;
+					width: 8em;
+					margin-left: auto;
+					font-size: size(xs);
+				}
+			}
+		}
+	}
+}
+
+// for seperation of featured listing and all listings
+
+.featured-listings--list-page {
+	margin-bottom: 14.3rem;
+	position: relative;
+
+	&::after {
+		content: '';
+		position: absolute;
+		width: 100%;
+		max-width: $desktop-lg;
+		height: 5px;
+		left: 50%;
+		transform: translateX(-50%);
+		bottom: -7.15rem;
+		background-color: $white;
+		border-radius: 5px;
+	}
+}
+// ============================
+// ==== FEATURED LISTINGS =====
+// ============================
+
+.all-listings {
+	@extend .featured-listings;
+
+	.listings__cta {
+		grid-area: cta;
+		padding-bottom: 9rem;
+	}
+
+	@include desktop-lg {
+		&__container {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			grid-template-rows: repeat(3, 1fr);
+			max-width: $desktop-lg;
+
+			margin: auto;
+
+			.card {
+				@include flexcenter(column);
+
+				margin: 0 0 4.8rem 0;
+				max-width: 31.6rem;
+
+				&:nth-of-type(3n - 2) {
+					margin-right: calc(14rem / 3);
+				}
+				&:nth-of-type(3n - 1) {
+					margin-right: calc(14rem / 6);
+					margin-left: calc(14rem / 6);
+				}
+				&:nth-of-type(3n) {
+					margin-left: calc(14rem / 3);
+					margin-right: 0;
+				}
+
+				&__container {
+					margin-left: 0;
+					max-width: none;
+					width: 100%;
+					align-items: flex-start;
+				}
+
+				&__subtitle {
+					grid-template-areas:
+						'bedroom cta'
+						'area cta';
+					font-size: size(xs);
+				}
+
+				&__cta {
+					grid-area: cta;
+					margin: 0;
+					width: 8em;
+					margin-left: auto;
+					font-size: size(xs);
+				}
+			}
+		}
+	}
+}

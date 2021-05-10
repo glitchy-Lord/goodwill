@@ -1,0 +1,163 @@
+.intro {
+	min-height: 100vh;
+	position: relative;
+	@include flexcenter(row);
+
+	img {
+		display: none;
+	}
+
+	h1 {
+		font-family: $heading;
+		font-size: size(xl);
+		font-weight: weight(regular);
+		margin: 0 5%;
+		z-index: 1;
+	}
+}
+
+@include tablet {
+	.intro {
+		overflow: hidden;
+
+		.logo {
+			display: inline;
+			position: absolute;
+			height: 90%;
+			bottom: 0;
+			left: 50%;
+			transform: translateX(-50%);
+			opacity: 5%;
+		}
+	}
+}
+
+@include desktop-md {
+	.intro {
+		justify-content: flex-start;
+		img {
+			display: inline;
+			position: absolute;
+			bottom: 0;
+		}
+
+		.headshot {
+			right: -3.5%;
+			height: 75%;
+			z-index: 1;
+		}
+
+		h1 {
+			width: 50%;
+		}
+	}
+}
+
+@include desktop-lg {
+	.intro {
+		max-width: $desktop-lg;
+		margin: auto;
+
+		.headshot {
+			height: 92%;
+		}
+
+		.logo {
+			height: 92%;
+		}
+
+		h1 {
+			font-size: size(xxl);
+			margin: 0;
+		}
+	}
+}
+
+section .social__about-page {
+	background: transparent;
+	margin: 7.5rem 0;
+}
+
+.history {
+	margin: 0 5%;
+	padding-bottom: 10rem;
+	box-sizing: content-box;
+
+	.img {
+		height: 32.5rem;
+		width: 100%;
+	}
+
+	img {
+		width: 100%;
+		height: 100%;
+		border-radius: 1.8rem;
+		object-fit: cover;
+		object-position: 0 25%;
+	}
+
+	.text {
+		width: 100%;
+		padding-top: 5rem;
+		text-align: center;
+		line-height: 2.5em;
+
+		h2 {
+			font-size: size(l);
+			font-weight: weight(semi-bold);
+			margin-bottom: 3rem;
+		}
+
+		p {
+			font-size: size(xs);
+		}
+	}
+}
+
+@include tablet {
+	.history {
+		.img {
+			height: 50rem;
+		}
+
+		.text {
+			line-height: 3em;
+		}
+	}
+}
+
+@include desktop-md {
+	.history {
+		@include flexcenter(row);
+		height: 45rem;
+
+		.img {
+			height: 100%;
+		}
+
+		.text {
+			padding: 5rem 0 5rem 3rem;
+		}
+	}
+}
+
+@include desktop-lg {
+	.history {
+		height: 65rem;
+		max-width: $desktop-lg;
+		margin: auto;
+
+		.text {
+			line-height: 4em;
+
+			h2 {
+				font-size: size(xl);
+				margin-bottom: 7rem;
+			}
+
+			p {
+				font-size: size(s);
+			}
+		}
+	}
+}
