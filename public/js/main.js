@@ -1,4 +1,6 @@
-// for hamburger
+// ===========================
+// ======== HAMBURGER ========
+// ===========================
 
 const hamburger = document.querySelector('.hamburger');
 const navbarMenu = document.querySelector('.navbar__menu');
@@ -10,7 +12,9 @@ function mobileMenu() {
 	navbarMenu.classList.toggle('active');
 }
 
-// for marquee like scrolling
+// ===========================
+// == MARQUEE LIKE SCROLLING ==
+// ===========================
 
 try {
 	const root = document.documentElement;
@@ -28,7 +32,9 @@ try {
 	console.log(err);
 }
 
-// change navbar style on scroll
+// =============================
+// CHANGE NAVBAR STYLE ON SCROLL
+// =============================
 
 const navbarBrand = document.querySelector('.navbar__brand');
 const navbarLogo = document.querySelector('.navbar__logo');
@@ -57,3 +63,42 @@ navbarIntersectionOptions);
 navbarIntersectionObserver.observe(navbarIntersection);
 
 // HIGHLIGHT CURRENT PAGE IN NAVBAR
+
+// =============================
+// CAROUSEL SLIDER FOR SHOW PAGE
+// =============================
+try {
+	// get images with the class name 'thumbnail'
+	const thumbnails = document.getElementsByClassName('thumbnail');
+	// get the image image with the class name 'active'
+	const activeImage = document.getElementsByClassName('active');
+
+	// loop through the images in the thumbnail array
+	for (let i = 0; i < thumbnails.length; i++) {
+		thumbnails[i].addEventListener('mouseover', function () {
+			// on mouseover remove the 'active' class from the current image
+			if (activeImage.length > 0) {
+				activeImage[0].classList.remove('active');
+			}
+			// add the active class to the image being hovered
+			this.classList.add('active');
+
+			// change the src source of the image being displayed
+			// to the image being hovered over
+			document.querySelector('.img__selected').src = this.src;
+		});
+	}
+
+	const btnRight = document.querySelector('.arrow-right');
+	const btnLeft = document.querySelector('.arrow-left');
+
+	btnLeft.addEventListener('click', function () {
+		document.querySelector('.img-slider__container').scrollLeft -= 300;
+	});
+
+	btnRight.addEventListener('click', function () {
+		document.querySelector('.img-slider__container').scrollLeft += 300;
+	});
+} catch (err) {
+	console.log(err);
+}

@@ -12,15 +12,61 @@
 	.img {
 		width: 100%;
 		height: 100%;
+		position: relative;
 		// margin: auto;
-		// overflow: hidden;
 
-		img {
+		&__selected {
 			height: 100%;
 			width: 100%;
 			object-fit: cover;
+			margin-bottom: 8rem;
 
 			border-radius: 1.8rem 1.8rem 0 0;
+		}
+
+		&-slider {
+			@include flexcenter(row);
+			justify-content: initial;
+			width: 100%;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			// background: linear-gradient(
+			// 	to right,
+			// 	rgba(white, 0.4),
+			// 	rgba(white, 0.15)
+			// );
+			background: rgba($gray, 0.5);
+
+			.arrow {
+				width: 10%;
+
+				&:active {
+					transform: scale(1.5);
+				}
+			}
+
+			&__container {
+				@include flexcenter(row);
+				justify-content: flex-start;
+				flex-wrap: nowrap;
+				overflow: hidden;
+				height: 7.3rem;
+				box-sizing: content-box;
+				padding: 0.5rem 0;
+
+				.thumbnail {
+					height: 100%;
+					margin: 0 0.9rem;
+					opacity: 0.5;
+					border: 2px solid $light-gray;
+				}
+
+				.active {
+					transform: scale(1.1);
+					opacity: 1;
+				}
+			}
 		}
 	}
 
@@ -85,6 +131,29 @@
 	}
 }
 
+@include tablet {
+	.show-image {
+		.img {
+			&__selected {
+				margin-bottom: 0;
+			}
+
+			&-slider {
+				background: rgba($gray, 0.5);
+
+				&__container {
+					padding: 1rem 0;
+					height: 9.5rem;
+
+					.thumbnail {
+						margin: 0 1.5rem;
+					}
+				}
+			}
+		}
+	}
+}
+
 @include desktop-md {
 	.show-image {
 		@include flexcenter(row);
@@ -93,8 +162,17 @@
 		.img {
 			width: 66%;
 
-			img {
+			&__selected {
 				border-radius: 1.8rem 0 0 1.8rem;
+			}
+
+			&-slider {
+				border-bottom-left-radius: 1.8rem;
+
+				&__container {
+					padding: 1.5rem 0;
+					height: 11rem;
+				}
 			}
 		}
 
@@ -134,6 +212,16 @@
 @include desktop-lg {
 	.show-image {
 		height: 65.5rem;
+
+		.img {
+			&-slider .arrow {
+				cursor: pointer;
+
+				&:hover {
+					transform: scale(1.5);
+				}
+			}
+		}
 
 		.details {
 			padding: 11.3rem 0 10.7rem 5rem;
@@ -211,36 +299,6 @@
 	}
 }
 
-// .details {
-// 	margin: auto;
-// 	width: 80%;
-// 	max-width: $desktop-lg;
-// 	text-transform: uppercase;
-// 	letter-spacing: 0.1em;
-// 	font-size: size(s);
-
-// 	&__heading,
-// 	&__title:not(:last-of-type) {
-// 		margin-bottom: 2rem;
-// 	}
-
-// 	&__heading {
-// 		font-size: size(xl);
-// 		font-weight: weight(semi-bold);
-// 	}
-
-// 	&__title {
-// 		&-description {
-// 			text-transform: none;
-// 		}
-
-// 		p {
-// 			font-size: size(xs);
-// 			margin-top: 0.5rem;
-// 		}
-// 	}
-// }
-
 .featured-listings--show-page {
 	padding-bottom: 7.15rem;
 	padding-top: 18.2rem;
@@ -259,3 +317,57 @@
 		border-radius: 5px;
 	}
 }
+
+// .img {
+// 	&-slider {
+// 		@include flexcenter(row);
+// 		justify-content: initial;
+// 		width: 100%;
+// 		position: absolute;
+// 		bottom: 0;
+// 		left: 0;
+// 		background: rgba($gray, 0.5);
+// 		border-bottom-left-radius: 1.8rem;
+
+// 		.arrow {
+// 			width: 10%;
+// 			cursor: pointer;
+
+// 			&:hover {
+// 				// opacity: 0.5;
+// 				transform: scale(1.5);
+// 			}
+// 		}
+
+// 		&__container {
+// 			// width: 80%;
+// 			box-sizing: content-box;
+// 			padding: 1.5rem 0;
+// 			@include flexcenter(row);
+// 			justify-content: flex-start;
+// 			flex-wrap: nowrap;
+// 			height: 11rem;
+// 			overflow: hidden;
+// 			// background: rgba($gray, 0.5);
+
+// 			.thumbnail {
+// 				height: 100%;
+// 				margin: 0 1.5rem;
+// 				// margin-right: 3rem;
+// 				cursor: pointer;
+// 				opacity: 0.5;
+// 				border: 2px solid $light-gray;
+
+// 				// &:hover {
+// 				// 	opacity: 1;
+// 				// 	transform: scale(1.1);
+// 				// }
+// 			}
+// 			.active,
+// 			.thumbnail:hover {
+// 				opacity: 1;
+// 				transform: scale(1.1);
+// 			}
+// 		}
+// 	}
+// }
