@@ -1,0 +1,169 @@
+<% layout('layout/boilerplate') %>
+<div class="bg-gradient">
+	<main class="new-form navbar-intersection">
+		<form action="/listings" method="POST">
+			<h2>Add New Property</h2>
+			<div class="new-form__price">
+				<label for="name">Price</label>
+				<input
+					type="text"
+					name="listing[price]"
+					id="price"
+					placeholder="12000000"
+					required
+				/>
+			</div>
+
+			<div class="new-form__image">
+				<label for="image">Image</label>
+				<input
+					type="text"
+					name="listing[image]"
+					id="image"
+					placeholder="image.jpg"
+					required
+				/>
+			</div>
+
+			<div class="new-form__location">
+				<label for="location">Location</label>
+				<input
+					type="text"
+					name="listing[location]"
+					id="location"
+					placeholder="Hammond, Indiana"
+					required
+				/>
+			</div>
+
+			<div class="new-form__locality">
+				<label for="locality">Locality</label>
+				<input
+					type="text"
+					name="listing[locality]"
+					id="locality"
+					placeholder="Redwood Spring"
+					required
+				/>
+			</div>
+
+			<div class="new-form__area">
+				<label for="area">Area</label>
+				<input
+					type="number"
+					name="listing[area]"
+					id="area"
+					placeholder="1200"
+					required
+				/>
+			</div>
+
+			<div class="new-form__bedroom">
+				<label for="bedroom">Bedroom</label>
+				<input
+					type="number"
+					name="listing[bedroom]"
+					id="bedroom"
+					placeholder="Redwood Spring"
+					required
+				/>
+			</div>
+
+			<div class="new-form__property-type">
+				<label for="property-type">Property Type</label>
+				<select name="listing[property-type]" id="property-type" required>
+					<option class="default" value="">Select</option>
+					<option class="" value="">Residential</option>
+					<option class="" value="">Commercial</option>
+				</select>
+			</div>
+
+			<div class="new-form__type">
+				<label for="type">Type</label>
+				<select name="listing[type]" id="type" required>
+					<option class="default" value="">Select</option>
+					<option class="" value="">Buy</option>
+					<option class="" value="">Sale</option>
+					<option class="" value="">Rent</option>
+				</select>
+			</div>
+
+			<div class="new-form__furnished">
+				<label for="furnished">Furnished</label>
+				<input
+					type="text"
+					name="listing[furnished]"
+					id="furnished"
+					placeholder="Yes / No"
+					required
+				/>
+			</div>
+
+			<div class="new-form__floor">
+				<label for="floor">Floor</label>
+				<input
+					type="number"
+					name="listing[floor]"
+					id="floor"
+					placeholder="5"
+					required
+				/>
+			</div>
+
+			<div class="new-form__amenities">
+				<label for="amenities">Amenities</label>
+				<textarea
+					name="listing[amenities]"
+					id="amenities"
+					cols="30"
+					rows="2"
+					type="text"
+					placeholder="CCTV Surveillance"
+					required
+				></textarea>
+			</div>
+
+			<div class="new-form__vicinity">
+				<label for="vicinity">Vicinity</label>
+				<textarea
+					name="listing[vicinity]"
+					id="vicinity"
+					cols="30"
+					rows="2"
+					type="text"
+					placeholder="Market"
+					required
+				></textarea>
+			</div>
+
+			<div class="new-form__connectivity">
+				<label for="connectivity">Connectivity</label>
+				<textarea
+					name="listing[connectivity]"
+					id="connectivity"
+					cols="30"
+					rows="2"
+					type="text"
+					placeholder="Kurla Station"
+					required
+				></textarea>
+			</div>
+
+			<div class="new-form__description">
+				<label for="description">Description</label>
+				<textarea
+					name="listing[description]"
+					id="description"
+					cols="30"
+					rows="2"
+					type="text"
+					placeholder="Amazing Neighbourhood"
+					required
+				></textarea>
+			</div>
+
+			<button class="new-form__btn">Add Property</button>
+			<a href="/listings">cancel</a>
+		</form>
+	</main>
+</div>

@@ -67,6 +67,8 @@ navbarIntersectionObserver.observe(navbarIntersection);
 // =============================
 // CAROUSEL SLIDER FOR SHOW PAGE
 // =============================
+
+// a try catch block for when you are on a different page
 try {
 	// get images with the class name 'thumbnail'
 	const thumbnails = document.getElementsByClassName('thumbnail');
@@ -88,14 +90,16 @@ try {
 			document.querySelector('.img__selected').src = this.src;
 		});
 	}
-
+	// get the arrow images that will be used for the scroll
 	const btnRight = document.querySelector('.arrow-right');
 	const btnLeft = document.querySelector('.arrow-left');
 
+	// scroll left when the left arrow is clicked
 	btnLeft.addEventListener('click', function () {
 		document.querySelector('.img-slider__container').scrollLeft -= 300;
 	});
 
+	// scroll right when the right arrow is clicked
 	btnRight.addEventListener('click', function () {
 		document.querySelector('.img-slider__container').scrollLeft += 300;
 	});

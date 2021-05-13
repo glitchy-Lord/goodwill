@@ -1,4 +1,4 @@
-.contact-form {
+.new-form {
 	position: relative;
 	width: 90%;
 	margin: auto;
@@ -13,17 +13,27 @@
 		display: grid;
 		grid-template-areas:
 			'heading'
-			'name'
-			'phone-number'
-			'email'
+			'price'
+			'image'
+			'location'
+			'locality'
+			'area'
+			'bedroom'
 			'property-type'
 			'type'
+			'furnished'
+			'floor'
+			'amenities'
+			'vicinity'
+			'connectivity'
+			'description'
 			'btn';
 
 		line-height: 30px;
 	}
 
 	input,
+	textarea,
 	select,
 	option {
 		font-size: size(xxs-m);
@@ -46,32 +56,78 @@
 		margin-bottom: 2rem;
 	}
 
-	&__name {
-		grid-area: name;
+	&__price,
+	&__image,
+	&__location,
+	&__locality,
+	&__property-type,
+	&__type,
+	&__area,
+	&__bedroom,
+	&__furnished,
+	&__floor,
+	&__amenities,
+	&__vicinity,
+	&__connectivity,
+	&__description {
 		margin: 0 5%;
 		margin-bottom: 1rem;
 	}
 
-	&__phone {
-		grid-area: phone-number;
-		margin: 0 5%;
-		margin-bottom: 1rem;
+	&__price {
+		grid-area: price;
 	}
 
-	&__email {
-		grid-area: email;
-		margin: 0 5%;
-		margin-bottom: 1rem;
+	&__image {
+		grid-area: image;
+	}
+
+	&__location {
+		grid-area: location;
+	}
+
+	&__locality {
+		grid-area: locality;
+	}
+
+	&__area {
+		grid-area: area;
+	}
+
+	&__bedroom {
+		grid-area: bedroom;
 	}
 
 	&__property-type {
 		grid-area: property-type;
-		margin: 0 5%;
 	}
 
 	&__type {
 		grid-area: type;
-		margin: 0 5%;
+	}
+
+	&__furnished {
+		grid-area: furnished;
+	}
+
+	&__floor {
+		grid-area: floor;
+	}
+
+	&__amenities {
+		grid-area: amenities;
+	}
+
+	&__vicinity {
+		grid-area: vicinity;
+	}
+
+	&__connectivity {
+		grid-area: connectivity;
+	}
+
+	&__description {
+		grid-area: description;
 	}
 
 	&__btn {
@@ -79,7 +135,7 @@
 		grid-area: btn;
 		width: fit-content;
 		height: fit-content;
-		margin: 3rem auto 0 auto;
+		margin: 2rem auto 0 auto;
 		font-size: size(xxs-m);
 		padding-top: 0.75em;
 		padding-bottom: 0.75em;
@@ -87,14 +143,14 @@
 }
 
 @include tablet {
-	.contact-form form {
+	.new-form form {
 		padding-left: 5.5rem;
 		padding-right: 5.5rem;
 	}
 }
 
 @include desktop-md {
-	.contact-form {
+	.new-form {
 		font-size: size(xs);
 
 		form {
@@ -103,6 +159,7 @@
 		}
 
 		input,
+		textarea,
 		select,
 		option {
 			font-size: size(xs);
@@ -115,7 +172,7 @@
 }
 
 @include desktop-lg {
-	.contact-form {
+	.new-form {
 		width: 100%;
 		max-width: $desktop-lg;
 
@@ -124,49 +181,57 @@
 			padding-right: 17rem;
 			grid-template-areas:
 				'heading heading'
-				'name phone-number'
-				'email email'
+				'price image'
+				'location locality'
 				'property-type type'
+				'area bedroom'
+				'furnished floor'
+				'amenities amenities'
+				'vicinity vicinity'
+				'connectivity connectivity'
+				'description description'
 				'btn btn';
 		}
 
 		input,
+		textarea,
 		select,
 		option {
 			width: 36rem;
 		}
 
-		&__name {
+		&__price,
+		&__image,
+		&__location,
+		&__locality,
+		&__property-type,
+		&__type,
+		&__area,
+		&__bedroom,
+		&__furnished,
+		&__floor,
+		&__amenities,
+		&__vicinity,
+		&__connectivity,
+		&__description {
 			margin: 0;
 			margin-bottom: 1rem;
 		}
 
-		&__phone {
-			margin: 0;
-			margin-bottom: 1rem;
+		&__image,
+		&__locality,
+		&__type,
+		&__bedroom,
+		&__floor {
 			margin-left: 2.5rem;
 		}
 
-		&__email {
-			margin: 0;
-			margin-bottom: 1rem;
-
-			input {
-				width: 74.6rem;
-			}
-		}
-
-		&__property-type {
-			margin: 0;
-		}
-
-		&__type {
-			margin: 0;
-			margin-left: 2.5rem;
+		textarea {
+			width: 74.6rem;
 		}
 
 		&__btn {
-			margin-top: 8rem;
+			margin-top: 7rem;
 		}
 	}
 }

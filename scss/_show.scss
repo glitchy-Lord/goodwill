@@ -86,7 +86,8 @@
 			'price price'
 			'location type'
 			'area structure'
-			'bedroom cta';
+			'bedroom cta'
+			'delete edit';
 
 		&__price {
 			grid-area: price;
@@ -124,6 +125,26 @@
 		&__cta {
 			@include secondary-btn;
 			grid-area: cta;
+			margin-left: 4rem;
+			margin-top: 0;
+			width: fit-content;
+		}
+
+		&__cta-edit {
+			@include secondary-btn;
+			grid-area: edit;
+			margin-left: 4rem;
+			margin-top: 0;
+			width: fit-content;
+		}
+
+		form {
+			grid-area: delete;
+		}
+
+		&__cta-delete {
+			@include secondary-btn;
+			background: transparent;
 			margin-left: 4rem;
 			margin-top: 0;
 			width: fit-content;
@@ -187,7 +208,9 @@
 				'bedroom'
 				'type'
 				'structure'
-				'cta';
+				'cta'
+				'edit'
+				'delete';
 
 			&__price {
 				text-align: initial;
@@ -204,6 +227,16 @@
 			&__cta {
 				margin-left: 0;
 				height: fit-content;
+			}
+
+			&__cta-edit {
+				margin-left: 0;
+				width: fit-content;
+			}
+
+			&__cta-delete {
+				margin-left: 0;
+				width: fit-content;
 			}
 		}
 	}

@@ -1,0 +1,135 @@
+<% layout('layout/boilerplate') %>
+
+<div class="bg-gradient">
+	<main class="show-image navbar-intersection">
+		<div class="img">
+			<img class="img__selected" src="/images/thumbnail.jpg" alt="" />
+			<div class="img-slider">
+				<img class="arrow arrow-left" src="/images/left-arrow.png" alt="" />
+				<div class="img-slider__container">
+					<img class="thumbnail active" src="/images/thumbnail.jpg" alt="" />
+					<img class="thumbnail" src="/images/thumbnail 2.jpg" alt="" />
+					<img class="thumbnail" src="/images/thumbnail 3.jpg" alt="" />
+					<img class="thumbnail" src="/images/thumbnail 4.jpg" alt="" />
+					<img class="thumbnail" src="/images/thumbnail 5.jpg" alt="" />
+				</div>
+				<img class="arrow arrow-right" src="/images/right-arrow.png" alt="" />
+			</div>
+		</div>
+		<div class="details">
+			<div class="details__price"><%= listing.price %></div>
+			<div class="details__location"><%= listing.location %></div>
+			<div class="details__area">area: <%= listing.area %> SQ.FT.</div>
+			<div class="details__bedroom">bedroom: <%= listing.bedroom %> BHK</div>
+			<div class="details__type">type: resale</div>
+			<div class="details__structure">structure type: apartment</div>
+			<a href="#" class="details__cta">contact us</a>
+			<a href="/listings/<%= listing._id %>/edit" class="details__cta-edit"
+				>edit</a
+			>
+			<form action="/listings/<%= listing._id %>?_method=DELETE" method="POST">
+				<button class="details__cta-delete">DELETE</button>
+			</form>
+		</div>
+	</main>
+
+	<section class="description">
+		<div class="description__heading">details</div>
+		<div class="description__title">
+			locality
+			<p class="description__title-locality"><%= listing.locality %></p>
+		</div>
+		<div class="description__title">
+			furnished
+			<p class="description__title-furnished">yes</p>
+		</div>
+		<div class="description__title">
+			floor
+			<p class="description__title-floor">na</p>
+		</div>
+		<div class="description__title">
+			amenities
+			<p class="description__title-amenities">
+				<span>parking</span>
+				<span>cctv surveillance</span>
+				<span>security</span>
+				<span>parking</span>
+			</p>
+		</div>
+		<div class="description__title">
+			vicinity
+			<p class="description__title-vicinity">
+				<span>parking</span>
+				<span>cctv surveillance</span>
+				<span>security</span>
+				<span>parking</span>
+			</p>
+		</div>
+		<div class="description__title">
+			connectivity
+			<p class="description__title-connectivity">
+				<span>parking</span>
+				<span>cctv surveillance</span>
+				<span>security</span>
+				<span>parking</span>
+			</p>
+		</div>
+		<div class="description__title">
+			description
+			<p class="description__title-description">
+				Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aperiam sed
+				officia qui? Quis tempore quia ipsa enim dolorem rem minima!
+			</p>
+		</div>
+	</section>
+
+	<section class="featured-listings featured-listings--show-page">
+		<div class="listings__title">SIMILAR LISTINGS</div>
+		<div class="listings__container">
+			<div class="card">
+				<div class="card__img--container">
+					<img src="/images/thumbnail.jpg" class="card__img" alt="" />
+				</div>
+				<div class="card__container">
+					<div class="card__price">123456789</div>
+					<div class="card__location">Lorem ipsum dolor sit.</div>
+					<div class="card__subtitle">
+						<div class="card__bedroom">4 BHK</div>
+						<a class="card__cta" href="#">Details</a>
+						<div class="card__area">1200 SQ. FT.</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="card">
+				<div class="card__img--container">
+					<img src="/images/thumbnail.jpg" class="card__img" alt="" />
+				</div>
+				<div class="card__container">
+					<div class="card__price">123456789</div>
+					<div class="card__location">Lorem ipsum dolor sit.</div>
+					<div class="card__subtitle">
+						<div class="card__bedroom">4 BHK</div>
+						<a class="card__cta" href="#">Details</a>
+						<div class="card__area">1200 SQ. FT.</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="card">
+				<div class="card__img--container">
+					<img src="/images/thumbnail.jpg" class="card__img" alt="" />
+				</div>
+				<div class="card__container">
+					<div class="card__price">123456789</div>
+					<div class="card__location">Lorem ipsum dolor sit.</div>
+					<div class="card__subtitle">
+						<div class="card__bedroom">4 BHK</div>
+						<a class="card__cta" href="#">Details</a>
+						<div class="card__area">1200 SQ. FT.</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>

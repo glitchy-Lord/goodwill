@@ -1,0 +1,62 @@
+<% layout('layout/boilerplate') %>
+
+<div class="bg-gradient">
+	<main class="contact-form navbar-intersection">
+		<form action="">
+			<h2>Contact Us</h2>
+			<div class="contact-form__name">
+				<label for="name">Name</label>
+				<input
+					type="text"
+					name="name"
+					id="name"
+					placeholder="John Doe"
+					required
+				/>
+			</div>
+
+			<div class="contact-form__phone">
+				<label for="phone-number">Phone Number</label>
+				<input
+					type="tel"
+					name="phone-number"
+					id="phone-number"
+					placeholder="XXX-XXX-XXXX"
+					required
+				/>
+			</div>
+
+			<div class="contact-form__email">
+				<label for="email">Email</label>
+				<input
+					type="email"
+					name="email"
+					id="email"
+					placeholder="error@mail.com"
+					required
+				/>
+			</div>
+
+			<div class="contact-form__property-type">
+				<label for="property-type">Property Type</label>
+				<select name="property-type" id="property-type" required>
+					<option class="default" value="">Select</option>
+					<option class="" value="">Residential</option>
+					<option class="" value="">Commercial</option>
+				</select>
+			</div>
+
+			<div class="contact-form__type">
+				<label for="type">Type</label>
+				<select name="type" id="type" required>
+					<option class="default" value="">Select</option>
+					<option class="" value="">Buy</option>
+					<option class="" value="">Sale</option>
+					<option class="" value="">Rent</option>
+				</select>
+			</div>
+
+			<button class="contact-form__btn">Send</button>
+		</form>
+	</main>
+</div>
