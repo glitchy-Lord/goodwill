@@ -23,6 +23,7 @@
 					id="image"
 					placeholder="image.jpg"
 					required
+					value="<%= listing.image %>"
 				/>
 			</div>
 
@@ -76,10 +77,20 @@
 
 			<div class="new-form__property-type">
 				<label for="property-type">Property Type</label>
-				<select name="listing[property-type]" id="property-type" required>
+				<select name="listing[property]" id="property-type" required>
 					<option class="default" value="">Select</option>
-					<option class="" value="">Residential</option>
-					<option class="" value="">Commercial</option>
+					<option class="" value="Residential">Residential</option>
+					<option class="" value="Commercial">Commercial</option>
+				</select>
+			</div>
+
+			<div class="new-form__structure-type">
+				<label for="structure-type">Structure Type</label>
+				<select name="listing[structure]" id="structure-type" required>
+					<option class="default" value="">Select</option>
+					<option class="" value="Apartment">Apartment</option>
+					<option class="" value="Bungalow">Bungalow</option>
+					<option class="" value="Chawl">Chawl</option>
 				</select>
 			</div>
 
@@ -87,9 +98,8 @@
 				<label for="type">Type</label>
 				<select name="listing[type]" id="type" required>
 					<option class="default" value="">Select</option>
-					<option class="" value="">Buy</option>
-					<option class="" value="">Sale</option>
-					<option class="" value="">Rent</option>
+					<option class="" value="Sale">Sale</option>
+					<option class="" value="Rent">Rent</option>
 				</select>
 			</div>
 
@@ -127,8 +137,10 @@
 					type="text"
 					placeholder="CCTV Surveillance"
 					required
-					value="<%= listing.amenities %>"
-				></textarea>
+				>
+					<%= listing.amenities %>
+					</textarea
+				>
 			</div>
 
 			<div class="new-form__vicinity">
@@ -141,8 +153,10 @@
 					type="text"
 					placeholder="Market"
 					required
-					value="<%= listing.vicinity %>"
-				></textarea>
+				>
+					<%= listing.vicinity %>
+					</textarea
+				>
 			</div>
 
 			<div class="new-form__connectivity">
@@ -155,8 +169,10 @@
 					type="text"
 					placeholder="Kurla Station"
 					required
-					value="<%= listing.connectivity %>"
-				></textarea>
+				>
+					<%= listing.connectivity %>
+					</textarea
+				>
 			</div>
 
 			<div class="new-form__description">
@@ -169,8 +185,10 @@
 					type="text"
 					placeholder="Amazing Neighbourhood"
 					required
-					value="<%= listing.description %>"
-				></textarea>
+				>
+					<%= listing.description %>
+					</textarea
+				>
 			</div>
 
 			<button class="new-form__btn">Update Property</button>

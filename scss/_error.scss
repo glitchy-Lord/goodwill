@@ -1,0 +1,33 @@
+.error-container {
+	min-height: 100vh;
+	@include flexcenter(column);
+	padding-top: calc(8vh + 4rem);
+	padding-bottom: calc(8vh + 4rem);
+}
+
+.error {
+	// background: linear-gradient(135deg, rgba(red, 0.4), rgba(red, 0.05));
+	@include glass-bg;
+	// background-color: rgb(255, 101, 101);
+	border-radius: 1.8rem;
+	width: 100%;
+	// max-width: $desktop-md;
+	// max-width: $tablet;
+	max-width: 70rem;
+	margin: auto;
+	padding: 2rem 3.5rem;
+
+	&__heading {
+		text-align: center;
+		font-size: size(l);
+		margin-bottom: 2rem;
+	}
+
+	&__details {
+		margin: auto;
+		margin-top: 2rem;
+		width: 100%;
+		font-size: size(xs);
+		overflow-wrap: break-word; //to break the words from overflowing out of the container or making a long string of words
+	}
+}

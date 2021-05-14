@@ -21,8 +21,14 @@
 			<div class="details__location"><%= listing.location %></div>
 			<div class="details__area">area: <%= listing.area %> SQ.FT.</div>
 			<div class="details__bedroom">bedroom: <%= listing.bedroom %> BHK</div>
-			<div class="details__type">type: resale</div>
-			<div class="details__structure">structure type: apartment</div>
+			<div class="details__type">type: <%= listing.type %></div>
+			<!-- ================================================ -->
+			<!-- ========== PROPERTY TYPE NOT SHOWING =========== -->
+			<!-- ================================================ -->
+			<!-- <div class="details__property">commercial/residential</div> -->
+			<div class="details__structure">
+				structure type: <%= listing.structure %>
+			</div>
 			<a href="#" class="details__cta">contact us</a>
 			<a href="/listings/<%= listing._id %>/edit" class="details__cta-edit"
 				>edit</a

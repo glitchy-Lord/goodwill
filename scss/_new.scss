@@ -14,15 +14,16 @@
 		grid-template-areas:
 			'heading'
 			'price'
-			'image'
 			'location'
 			'locality'
 			'area'
 			'bedroom'
+			'structure-type'
 			'property-type'
 			'type'
 			'furnished'
 			'floor'
+			'image'
 			'amenities'
 			'vicinity'
 			'connectivity'
@@ -61,6 +62,7 @@
 	&__location,
 	&__locality,
 	&__property-type,
+	&__structure-type,
 	&__type,
 	&__area,
 	&__bedroom,
@@ -100,6 +102,10 @@
 
 	&__property-type {
 		grid-area: property-type;
+	}
+
+	&__structure-type {
+		grid-area: structure-type;
 	}
 
 	&__type {
@@ -181,11 +187,12 @@
 			padding-right: 17rem;
 			grid-template-areas:
 				'heading heading'
-				'price image'
-				'location locality'
+				'price location'
+				'locality structure-type'
 				'property-type type'
 				'area bedroom'
 				'furnished floor'
+				'image image'
 				'amenities amenities'
 				'vicinity vicinity'
 				'connectivity connectivity'
@@ -205,6 +212,7 @@
 		&__location,
 		&__locality,
 		&__property-type,
+		&__structure-type,
 		&__type,
 		&__area,
 		&__bedroom,
@@ -218,14 +226,15 @@
 			margin-bottom: 1rem;
 		}
 
-		&__image,
-		&__locality,
+		&__location,
+		&__structure-type,
 		&__type,
 		&__bedroom,
 		&__floor {
 			margin-left: 2.5rem;
 		}
 
+		&__image input,
 		textarea {
 			width: 74.6rem;
 		}

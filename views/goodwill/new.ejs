@@ -14,17 +14,6 @@
 				/>
 			</div>
 
-			<div class="new-form__image">
-				<label for="image">Image</label>
-				<input
-					type="text"
-					name="listing[image]"
-					id="image"
-					placeholder="image.jpg"
-					required
-				/>
-			</div>
-
 			<div class="new-form__location">
 				<label for="location">Location</label>
 				<input
@@ -43,6 +32,17 @@
 					name="listing[locality]"
 					id="locality"
 					placeholder="Redwood Spring"
+					required
+				/>
+			</div>
+
+			<div class="new-form__image">
+				<label for="image">Image</label>
+				<input
+					type="text"
+					name="listing[image]"
+					id="image"
+					placeholder="image.jpg"
 					required
 				/>
 			</div>
@@ -71,10 +71,20 @@
 
 			<div class="new-form__property-type">
 				<label for="property-type">Property Type</label>
-				<select name="listing[property-type]" id="property-type" required>
+				<select name="listing[property]" id="property-type" required>
 					<option class="default" value="">Select</option>
-					<option class="" value="">Residential</option>
-					<option class="" value="">Commercial</option>
+					<option class="" value="Residential">Residential</option>
+					<option class="" value="Commercial">Commercial</option>
+				</select>
+			</div>
+
+			<div class="new-form__structure-type">
+				<label for="structure-type">Structure Type</label>
+				<select name="listing[structure]" id="structure-type" required>
+					<option class="default" value="">Select</option>
+					<option class="" value="Apartment">Apartment</option>
+					<option class="" value="Bungalow">Bungalow</option>
+					<option class="" value="Chawl">Chawl</option>
 				</select>
 			</div>
 
@@ -82,9 +92,8 @@
 				<label for="type">Type</label>
 				<select name="listing[type]" id="type" required>
 					<option class="default" value="">Select</option>
-					<option class="" value="">Buy</option>
-					<option class="" value="">Sale</option>
-					<option class="" value="">Rent</option>
+					<option class="" value="Sale">Sale</option>
+					<option class="" value="Rent">Rent</option>
 				</select>
 			</div>
 
