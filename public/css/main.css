@@ -811,14 +811,15 @@ a {
 .bg-gradient {
   background: -webkit-gradient(linear, left top, left bottom, from(#000000), color-stop(#14213d), to(#119da4));
   background: linear-gradient(#000000, #14213d, #119da4);
+  position: relative;
+  padding-top: 8vh;
 }
 
 #map {
   width: 100%;
   max-width: 1088px;
-  height: 60vh;
+  height: 52vh;
   margin: 0 auto 5rem auto;
-  padding-top: 8vh;
 }
 
 #map img {
@@ -1082,7 +1083,7 @@ a {
   max-width: 1088px;
   margin: auto;
   margin-bottom: 6.2rem;
-  padding-top: calc(8vh + 3.8rem);
+  padding-top: 3.8rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1105,6 +1106,7 @@ a {
   width: 100%;
   height: 100%;
   position: relative;
+  grid-area: img;
 }
 
 .show-image .img__selected {
@@ -1197,6 +1199,7 @@ a {
   letter-spacing: 0.05em;
   border-radius: 0 0 1.8rem 1.8rem;
   padding: 3rem;
+  grid-area: details;
   display: -ms-grid;
   display: grid;
       grid-template-areas: 'price price' 'location type' 'area structure' 'bedroom cta' 'delete edit';
@@ -1532,7 +1535,7 @@ a {
 }
 
 .intro {
-  min-height: 100vh;
+  min-height: 92vh;
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1715,7 +1718,7 @@ section .social__about-page {
   position: relative;
   width: 90%;
   margin: auto;
-  padding-top: calc(8vh + 4rem);
+  padding-top: 4rem;
   padding-bottom: calc(8vh + 4rem);
   font-size: 1.2rem;
 }
@@ -2179,6 +2182,46 @@ section .social__about-page {
   width: 100%;
   font-size: 1.6rem;
   overflow-wrap: break-word;
+}
+
+.alert {
+  width: 50%;
+  max-width: 800px;
+  height: 3rem;
+  margin: auto;
+  font-size: 1.6rem;
+  margin: 2rem auto 2rem auto;
+  padding: 0.5rem 2rem;
+  border-radius: 1.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.alert__success {
+  background: #2fb886;
+}
+
+.alert__error {
+  background: #f66358;
+}
+
+.alert .closebtn {
+  cursor: pointer;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  font-size: 4rem;
+}
+
+.alert .closebtn:hover {
+  color: black;
 }
 
 @media (min-width: 800px) {

@@ -1,9 +1,10 @@
-// npm i express ejs mongoose ejs-mate method-override joi
+// npm i express ejs mongoose ejs-mate method-override joi express-session connect-flash
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 const ejsMate = require('ejs-mate'); // for partials
 const session = require('express-session'); // for setting up flash and authentication
+const flash = require('connect-flash'); // for flashing messages
 
 const methodOverride = require('method-override'); // for using put/patch/delete request using forms
 const catchAsync = require('./utilities/catchAsync'); // for catching errors
@@ -43,6 +44,27 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
 // using '_method' for sending form req other than get/post
 app.use(methodOverride('_method'));
+// config session
+const sessionConfig = {
+	secret: 'thisshouldbeabettersecret',
+	resave: false,
+	saveUninitialized: true,
+	cookie: {
+		httpOnly: true,
+		expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
+		maxAge: 1000 * 60 * 60 * 24 * 7,
+	},
+};
+// use session
+app.use(session(sessionConfig));
+// use flash
+app.use(flash());
+
+app.use((req, res, next) => {
+	res.locals.success = req.flash('success');
+	res.locals.error = req.flash('error');
+	next();
+});
 
 // setting up the server
 app.listen(3000, () => {

@@ -1,5 +1,7 @@
 .bg-gradient {
 	@include gradient-bg;
+	position: relative;
+	padding-top: 8vh;
 }
 
 #map {
@@ -7,9 +9,10 @@
 	// top: 8vh;
 	width: 100%;
 	max-width: $desktop-lg;
-	height: 60vh;
+	// height: 60vh;
+	height: 52vh;
 	margin: 0 auto 5rem auto;
-	padding-top: 8vh;
+	// padding-top: 8vh;
 
 	img {
 		height: 100%;

@@ -4,8 +4,12 @@
 	// height: 65.5rem;
 	margin: auto;
 	margin-bottom: 6.2rem;
-	padding-top: calc(8vh + 3.8rem);
+	padding-top: 3.8rem;
 	@include flexcenter(column);
+	// display: grid;
+	// grid-template-areas:
+	// 'img'
+	// 'details';
 	position: relative;
 	box-sizing: content-box;
 
@@ -13,6 +17,7 @@
 		width: 100%;
 		height: 100%;
 		position: relative;
+		grid-area: img;
 		// margin: auto;
 
 		&__selected {
@@ -80,6 +85,7 @@
 		border-radius: 0 0 1.8rem 1.8rem;
 		// padding: 11.3rem 0 10.7rem 5rem;
 		padding: 3rem;
+		grid-area: details;
 
 		display: grid;
 		grid-template-areas:
@@ -178,6 +184,8 @@
 @include desktop-md {
 	.show-image {
 		@include flexcenter(row);
+		// display: grid;
+		// grid-template-areas: 'img details';
 		height: calc(65.5rem * 0.75);
 
 		.img {

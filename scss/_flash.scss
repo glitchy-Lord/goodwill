@@ -1,0 +1,33 @@
+.alert {
+	width: 50%;
+	max-width: $desktop-md;
+	height: 3rem;
+	margin: auto;
+	font-size: size(xs);
+	margin: 2rem auto 2rem auto;
+	padding: 0.5rem 2rem;
+	border-radius: 1.5rem;
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	&__success {
+		background: #2fb886;
+		// background: hsl(118, 41%, 45%);
+	}
+
+	&__error {
+		background: #f66358;
+	}
+
+	.closebtn {
+		cursor: pointer;
+		height: fit-content;
+		font-size: size(xxl);
+
+		&:hover {
+			color: black;
+		}
+	}
+}

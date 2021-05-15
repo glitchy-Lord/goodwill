@@ -51,6 +51,8 @@ router.post(
 		const listing = new Listing(req.body.listing);
 		// saving the new listing
 		await listing.save();
+		// on success flash a message with the following
+		req.flash('success', 'Successfully added a new listing');
 		// redirecting to the new listing
 		res.redirect(`/listings/${listing._id}`);
 	})
@@ -62,6 +64,12 @@ router.get(
 	catchAsync(async (req, res) => {
 		// finding by the id in the url
 		const listing = await Listing.findById(req.params.id);
+		if (!listing) {
+			// if listing by the Id cannot be found flash error
+			// redirect to listings page
+			req.flash('error', 'Cannot find that listing');
+			return res.redirect('/listings');
+		}
 		// rendering goodwill/show and passing the above listing variable to it
 		// so that it can be used to dynamically input the values
 		res.render('goodwill/show', { listing });
@@ -74,6 +82,12 @@ router.get(
 	catchAsync(async (req, res) => {
 		// finding by the id in the url
 		const listing = await Listing.findById(req.params.id);
+		if (!listing) {
+			// if listing by the Id cannot be found flash error
+			// redirect to listings page
+			req.flash('error', 'Cannot find that listing');
+			return res.redirect('/listings');
+		}
 		res.render('goodwill/edit', { listing });
 	})
 );
@@ -88,6 +102,9 @@ router.put(
 		const listing = await Listing.findByIdAndUpdate(id, {
 			...req.body.listing,
 		});
+		// on success flash a message with the following
+		req.flash('success', 'Successfully updated listing');
+		// redirecting to the updated listing
 		res.redirect(`/listings/${listing._id}`);
 	})
 );
@@ -99,6 +116,8 @@ router.delete(
 	catchAsync(async (req, res) => {
 		const { id } = req.params;
 		await Listing.findByIdAndDelete(id);
+		// on success flash a message with the following
+		req.flash('success', 'Successfully deleted a listing');
 		res.redirect('/listings');
 	})
 );
