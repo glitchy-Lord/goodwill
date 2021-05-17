@@ -1,0 +1,68 @@
+.register-form {
+	width: 40%;
+	max-width: $desktop-md;
+	margin: auto;
+	min-height: 92vh;
+	padding-top: 4rem;
+	padding-bottom: 4rem;
+	font-size: size(s);
+
+	form {
+		@include glass-bg;
+		margin: auto;
+		padding: 4rem 2rem;
+		border-radius: 1.8rem;
+		display: grid;
+		grid-template-areas:
+			'heading'
+			'username'
+			'email'
+			'password'
+			'button';
+	}
+
+	&__username,
+	&__email,
+	&__password {
+		margin: auto;
+		margin-bottom: 2rem;
+		width: 80%;
+	}
+
+	&__username {
+		grid-area: username;
+	}
+	&__email {
+		grid-area: email;
+	}
+	&__password {
+		grid-area: password;
+	}
+
+	h2 {
+		font-size: size(xxl);
+		font-weight: weight(semi-bold);
+		margin-bottom: 2rem;
+		grid-area: heading;
+		text-align: center;
+	}
+
+	input {
+		width: 100%;
+		font-size: size(xs);
+		// font-size: size(s);
+		margin-top: 0.5rem;
+		padding: 1rem 2rem;
+		border: none;
+		color: $black;
+		border-radius: 1rem;
+	}
+
+	button {
+		@include primary-btn;
+		width: fit-content;
+		height: fit-content;
+		margin: 2rem auto 0 auto;
+		grid-area: button;
+	}
+}

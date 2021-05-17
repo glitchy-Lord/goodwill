@@ -1,19 +1,26 @@
 // npm i express ejs mongoose ejs-mate method-override joi express-session connect-flash
+// npm i passport passport-local passport-local-mongoose
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 const ejsMate = require('ejs-mate'); // for partials
 const session = require('express-session'); // for setting up flash and authentication
 const flash = require('connect-flash'); // for flashing messages
-
 const methodOverride = require('method-override'); // for using put/patch/delete request using forms
+const passport = require('passport'); // allows us to plugin multiple strategies for authentication
+const LocalStrategy = require('passport-local'); // local strategy for authentication
+
 const catchAsync = require('./utilities/catchAsync'); // for catching errors
 const ExpressError = require('./utilities/ExpressError'); // for customizing error messages
 
 // requiring the listing model
 const Listing = require('./models/listing');
+// requiring the user model
+const User = require('./models/user');
 // require the listings routes
-const listings = require('./routes/listings');
+const listingRoutes = require('./routes/listings');
+// require the users routes
+const userRoutes = require('./routes/users');
 
 // connecting server to mongo database
 mongoose.connect('mongodb://localhost:27017/goodwill', {
@@ -60,7 +67,23 @@ app.use(session(sessionConfig));
 // use flash
 app.use(flash());
 
+// to initialize passport
+app.use(passport.initialize());
+// for persistent login sessions
+// make sure session is used before passport.session
+app.use(passport.session());
+// passport use the LocalStrategy for which the authentication method
+// is located on User model called authenticate
+passport.use(new LocalStrategy(User.authenticate()));
+// how to store User in the session
+passport.serializeUser(User.serializeUser());
+// how to get User out of the session
+passport.deserializeUser(User.deserializeUser());
+
 app.use((req, res, next) => {
+	// to make the current user available in all the templates
+	res.locals.currentUser = req.user;
+	// to make flash globally available
 	res.locals.success = req.flash('success');
 	res.locals.error = req.flash('error');
 	next();
@@ -71,8 +94,23 @@ app.listen(3000, () => {
 	console.log('listening on port 3000');
 });
 
+// app.get('/fakeuser', async (req, res) => {
+// 	// save a new user using email and username
+// 	const user = new User({ email: 'tim@gmail.com', username: 'tim' });
+// 	// register the user using above and password
+// 	// also checks if the username is unique
+// 	const newUser = await User.register(user, 'tim');
+// 	res.send(newUser);
+// });
+
+// register route not fixed
+// meaning registering will not log the user in
+// since there will only be one user
+
+// use user router and prefix everything with '/'
+app.use('/', userRoutes);
 // use listings router and prefix everything with '/listings'
-app.use('/listings', listings);
+app.use('/listings', listingRoutes);
 
 // rendering homepage
 app.get('/', (req, res) => {
@@ -89,10 +127,13 @@ app.get('/about', (req, res) => {
 	res.render('goodwill/about');
 });
 
+// if the above is not matched then this will be matched
+// pass express error to next
 app.all('*', (req, res, next) => {
 	next(new ExpressError('Page not found', 404));
 });
 
+// error handling
 app.use((err, req, res, next) => {
 	const { statusCode = 500 } = err;
 	if (!err.message) err.message = 'Something went wrong';

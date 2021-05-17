@@ -1,0 +1,25 @@
+<% layout('layout/boilerplate') %>
+<div class="bg-gradient">
+	<%- include('../partials/flash') %>
+	<main class="register-form">
+		<form action="/register" method="POST">
+			<h2>Register</h2>
+			<div class="register-form__username">
+				<label for="username">Username</label>
+				<input type="text" name="username" id="username" required />
+			</div>
+
+			<div class="register-form__email">
+				<label for="email">Email</label>
+				<input type="email" name="email" id="email" required />
+			</div>
+
+			<div class="register-form__password">
+				<label for="password">Password</label>
+				<input type="password" name="password" id="password" required />
+			</div>
+
+			<button>Register</button>
+		</form>
+	</main>
+</div>

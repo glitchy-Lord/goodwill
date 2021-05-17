@@ -1,7 +1,14 @@
 <!-- NAVBAR -->
 <nav class="navbar">
 	<div class="navbar__container">
-		<a class="navbar__brand" href="/">Goodwill</a>
+		<div class="navbar__brand">
+			<a class="brand" href="/">Goodwill</a>
+			<!-- if current user exists show add listing and logout buttons -->
+			<% if (currentUser) { %>
+			<a href="/listings/new">Add Listing</a>
+			<a href="/logout">Logout</a>
+			<% } %>
+		</div>
 		<a class="navbar__logo" href="/">
 			<img src="/images/logo.svg" alt="" />
 		</a>

@@ -24,10 +24,18 @@
 	}
 
 	&__brand {
-		font-family: $heading;
-		font-size: size(l);
 		margin-left: 5%;
-		color: $accent-color;
+		font-size: size(s);
+
+		.brand {
+			font-family: $heading;
+			color: $accent-color;
+			font-size: size(l);
+		}
+
+		a {
+			margin-right: 2rem;
+		}
 
 		&.scrolled {
 			display: none;

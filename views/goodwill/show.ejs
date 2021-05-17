@@ -5,6 +5,7 @@
 	<main class="show-image navbar-intersection">
 		<div class="img">
 			<img class="img__selected" src="/images/thumbnail.jpg" alt="" />
+			<!-- <img src="<%= listing.image %> " class="card__img" alt="" /> -->
 			<div class="img-slider">
 				<img class="arrow arrow-left" src="/images/left-arrow.png" alt="" />
 				<div class="img-slider__container">
@@ -30,13 +31,18 @@
 			<div class="details__structure">
 				structure type: <%= listing.structure %>
 			</div>
+			<!-- if there is no current user show contact btn -->
+			<% if (!currentUser) { %>
 			<a href="#" class="details__cta">contact us</a>
+			<% } else if (currentUser && listing.author.equals(currentUser._id)) { %>
+			<!-- else show edit and delete btn -->
 			<a href="/listings/<%= listing._id %>/edit" class="details__cta-edit"
 				>edit</a
 			>
 			<form action="/listings/<%= listing._id %>?_method=DELETE" method="POST">
 				<button class="details__cta-delete">DELETE</button>
 			</form>
+			<% } %>
 		</div>
 	</main>
 

@@ -1,7 +1,7 @@
 .alert {
-	width: 50%;
+	width: 90%;
 	max-width: $desktop-md;
-	height: 3rem;
+	height: fit-content;
 	margin: auto;
 	font-size: size(xs);
 	margin: 2rem auto 2rem auto;
@@ -12,19 +12,25 @@
 	justify-content: space-between;
 	align-items: center;
 
+	@include tablet {
+		width: 55%;
+		height: 3rem;
+	}
+
 	&__success {
-		background: #2fb886;
+		background: $flash-success;
 		// background: hsl(118, 41%, 45%);
 	}
 
 	&__error {
-		background: #f66358;
+		background: $flash-error;
 	}
 
 	.closebtn {
 		cursor: pointer;
 		height: fit-content;
 		font-size: size(xxl);
+		margin-left: 2rem;
 
 		&:hover {
 			color: black;

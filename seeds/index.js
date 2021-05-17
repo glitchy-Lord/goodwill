@@ -38,6 +38,7 @@ const seedDB = async () => {
 			location: `${cities[random1000].city}, ${cities[random1000].state}`,
 			// randomly selecting the descriptors and places from the seedhelpers files
 			locality: `${sample(descriptors)} ${sample(places)}`,
+			author: '60a1588f7764c004c8344f58',
 		});
 		await prop.save();
 	}
