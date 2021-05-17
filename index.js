@@ -10,11 +10,8 @@ const methodOverride = require('method-override'); // for using put/patch/delete
 const passport = require('passport'); // allows us to plugin multiple strategies for authentication
 const LocalStrategy = require('passport-local'); // local strategy for authentication
 
-const catchAsync = require('./utilities/catchAsync'); // for catching errors
 const ExpressError = require('./utilities/ExpressError'); // for customizing error messages
 
-// requiring the listing model
-const Listing = require('./models/listing');
 // requiring the user model
 const User = require('./models/user');
 // require the listings routes
