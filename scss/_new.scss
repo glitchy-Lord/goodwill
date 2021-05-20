@@ -82,6 +82,32 @@
 
 	&__image {
 		grid-area: image;
+		display: inline-flex;
+		align-items: center;
+		margin-top: 1rem;
+
+		&-input {
+			display: none;
+		}
+
+		&-button {
+			font-size: size(xxs-m);
+			font-weight: weight(semi-bold);
+			padding: 1.5rem 2rem;
+			margin-right: 1.5rem;
+			width: fit-content;
+			border: none;
+			border-radius: 1rem;
+			color: $black;
+			cursor: pointer;
+		}
+
+		&-label {
+			max-width: 15rem;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			white-space: nowrap;
+		}
 	}
 
 	&__location {

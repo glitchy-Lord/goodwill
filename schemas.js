@@ -4,7 +4,7 @@ const Joi = require('joi'); // to validate before saving the data to database
 module.exports.listingSchema = Joi.object({
 	listing: Joi.object({
 		price: Joi.number().required().min(1).integer(),
-		image: Joi.string().required(),
+		// image: Joi.string().required(),
 		location: Joi.string().required(),
 		area: Joi.number().required().min(1).integer(),
 		bedroom: Joi.number().required().min(1).integer(),

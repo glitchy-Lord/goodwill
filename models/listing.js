@@ -7,7 +7,12 @@ const Schema = mongoose.Schema;
 // make a new mongoose schema
 const ListingSchema = new Schema({
 	price: Number,
-	image: String,
+	images: [
+		{
+			url: String,
+			filename: String,
+		},
+	],
 	location: String,
 	area: Number,
 	bedroom: Number,

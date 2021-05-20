@@ -33,7 +33,12 @@ const seedDB = async () => {
 			// price: Math.floor(Math.random() * (10000000 - 1000000 + 1)) + 1000000,     // randomly generating prices between a min and max
 			area: Math.floor(Math.random() * (2000 - 300 + 1)) + 300, // randomizing between 300 and 2000
 			bedroom: Math.floor(Math.random() * 3 + 1), // randomizing between 1 and 3
-
+			images: [
+				{
+					url: 'https://res.cloudinary.com/goodwill-estate-agency/image/upload/v1621337393/Goodwill/dl4u0ytc9sgeeuuyorgq.jpg',
+					filename: 'Goodwill/dl4u0ytc9sgeeuuyorgq',
+				},
+			],
 			// randomly selecting the city and state from the cities files
 			location: `${cities[random1000].city}, ${cities[random1000].state}`,
 			// randomly selecting the descriptors and places from the seedhelpers files

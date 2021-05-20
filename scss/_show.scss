@@ -36,15 +36,27 @@
 			position: absolute;
 			bottom: 0;
 			left: 0;
-			// background: linear-gradient(
-			// 	to right,
-			// 	rgba(white, 0.4),
-			// 	rgba(white, 0.15)
-			// );
 			background: rgba($gray, 0.5);
 
 			.arrow {
-				width: 10%;
+				width: 100%;
+
+				&__container {
+					@include flexcenter(row);
+					position: absolute;
+					height: 100%;
+					width: 10%;
+					z-index: 99;
+					background: rgba($gray, 0.7);
+
+					&-left {
+						left: 0;
+					}
+
+					&-right {
+						right: 0;
+					}
+				}
 
 				&:active {
 					transform: scale(1.5);

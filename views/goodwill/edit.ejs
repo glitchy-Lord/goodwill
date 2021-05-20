@@ -1,7 +1,11 @@
 <% layout('layout/boilerplate') %>
 <div class="bg-gradient">
 	<main class="new-form edit-form navbar-intersection">
-		<form action="/listings/<%= listing._id %>?_method=PUT" method="POST">
+		<form
+			action="/listings/<%= listing._id %>?_method=PUT"
+			method="POST"
+			enctype="multipart/form-data"
+		>
 			<h2>Update Property</h2>
 			<div class="new-form__price">
 				<label for="price">Price</label>
@@ -16,15 +20,17 @@
 			</div>
 
 			<div class="new-form__image">
-				<label for="image">Image</label>
 				<input
-					type="text"
-					name="listing[image]"
+					class="new-form__image-input"
+					type="file"
+					name="image"
 					id="image"
-					placeholder="image.jpg"
-					required
-					value="<%= listing.image %>"
+					multiple
 				/>
+				<button class="new-form__image-button" type="button">
+					Choose File(s)
+				</button>
+				<label class="new-form__image-label" for="image"></label>
 			</div>
 
 			<div class="new-form__location">

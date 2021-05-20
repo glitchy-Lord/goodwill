@@ -19,6 +19,11 @@ module.exports.createListing = async (req, res) => {
 
 	// making a new listing entry using the data filled in the new form
 	const listing = new Listing(req.body.listing);
+	// save the path and filename of the images to an array of objects
+	listing.images = req.files.map((f) => ({
+		url: f.path,
+		filename: f.filename,
+	}));
 	// save the current user as the author of the saved listing
 	listing.author = req.user._id;
 	// saving the new listing
@@ -67,6 +72,11 @@ module.exports.updateListing = async (req, res) => {
 	const listing = await Listing.findByIdAndUpdate(id, {
 		...req.body.listing,
 	});
+	// saving the new images in an array
+	const imgs = req.files.map((f) => ({ url: f.path, filename: f.filename }));
+	// add the path and filename of the new images to the array of objects
+	listing.images.push(...imgs); // spreading the array to save each as an object in the array
+	await listing.save();
 	// on success flash a message with the following
 	req.flash('success', 'Successfully updated listing');
 	// redirecting to the updated listing
