@@ -1,5 +1,6 @@
 // here is all the main logic
 const Listing = require('../models/listing'); // requiring the listing model
+const { cloudinary } = require('../cloudinary'); // require cloudinary object in the index file
 
 module.exports.index = async (req, res) => {
 	// find all the listings in the Listing collection
@@ -77,6 +78,20 @@ module.exports.updateListing = async (req, res) => {
 	// add the path and filename of the new images to the array of objects
 	listing.images.push(...imgs); // spreading the array to save each as an object in the array
 	await listing.save();
+	// if there are images to be deleted
+	if (req.body.deleteImages) {
+		// loop over all the images to be deleted
+		// destroy the image with the passed filename
+		for (let filename of req.body.deleteImages) {
+			await cloudinary.uploader.destroy(filename);
+		}
+		// update the listing such that
+		// pull all elements out of the array (images array)
+		// where the filename on each image is in req.body.deleteImages
+		await listing.updateOne({
+			$pull: { images: { filename: { $in: req.body.deleteImages } } },
+		});
+	}
 	// on success flash a message with the following
 	req.flash('success', 'Successfully updated listing');
 	// redirecting to the updated listing

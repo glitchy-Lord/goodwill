@@ -28,7 +28,9 @@
 			'vicinity'
 			'connectivity'
 			'description'
-			'btn';
+			'img-delete'
+			'btn'
+			'cancel';
 
 		line-height: 30px;
 	}
@@ -71,7 +73,8 @@
 	&__amenities,
 	&__vicinity,
 	&__connectivity,
-	&__description {
+	&__description,
+	&__img-delete {
 		margin: 0 5%;
 		margin-bottom: 1rem;
 	}
@@ -162,6 +165,10 @@
 		grid-area: description;
 	}
 
+	&__img-delete {
+		grid-area: img-delete;
+	}
+
 	&__btn {
 		@include primary-btn;
 		grid-area: btn;
@@ -171,6 +178,10 @@
 		font-size: size(xxs-m);
 		padding-top: 0.75em;
 		padding-bottom: 0.75em;
+	}
+
+	&__cancel {
+		grid-area: cancel;
 	}
 }
 
@@ -223,11 +234,12 @@
 				'vicinity vicinity'
 				'connectivity connectivity'
 				'description description'
-				'btn btn';
+				'img-delete img-delete'
+				'btn btn'
+				'cancel cancel';
 		}
 
-		input,
-		textarea,
+		input:not(input[type='checkbox']),
 		select,
 		option {
 			width: 36rem;
@@ -247,7 +259,8 @@
 		&__amenities,
 		&__vicinity,
 		&__connectivity,
-		&__description {
+		&__description,
+		&__img-delete {
 			margin: 0;
 			margin-bottom: 1rem;
 		}

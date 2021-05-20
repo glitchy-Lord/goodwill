@@ -1152,35 +1152,7 @@ a {
 
 .show-image .img-slider .arrow {
   width: 100%;
-}
-
-.show-image .img-slider .arrow__container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  position: absolute;
-  height: 100%;
   width: 10%;
-  z-index: 99;
-  background: rgba(121, 123, 132, 0.7);
-}
-
-.show-image .img-slider .arrow__container-left {
-  left: 0;
-}
-
-.show-image .img-slider .arrow__container-right {
-  right: 0;
 }
 
 .show-image .img-slider .arrow:active {
@@ -1847,7 +1819,7 @@ section .social__about-page {
   border-color: #fe4900;
   -webkit-transition: all 0.2s ease-in;
   transition: all 0.2s ease-in;
-  -ms-grid-row: 17;
+  -ms-grid-row: 18;
   -ms-grid-column: 1;
   grid-area: btn;
   width: -webkit-fit-content;
@@ -1956,7 +1928,7 @@ section .social__about-page {
   border-radius: 1.8rem;
   display: -ms-grid;
   display: grid;
-      grid-template-areas: 'heading' 'price' 'location' 'locality' 'area' 'bedroom' 'structure-type' 'property-type' 'type' 'furnished' 'floor' 'image' 'amenities' 'vicinity' 'connectivity' 'description' 'btn';
+      grid-template-areas: 'heading' 'price' 'location' 'locality' 'area' 'bedroom' 'structure-type' 'property-type' 'type' 'furnished' 'floor' 'image' 'amenities' 'vicinity' 'connectivity' 'description' 'img-delete' 'btn' 'cancel';
   line-height: 30px;
 }
 
@@ -1986,7 +1958,7 @@ section .social__about-page {
   margin-bottom: 2rem;
 }
 
-.new-form__price, .new-form__image, .new-form__location, .new-form__locality, .new-form__property-type, .new-form__structure-type, .new-form__type, .new-form__area, .new-form__bedroom, .new-form__furnished, .new-form__floor, .new-form__amenities, .new-form__vicinity, .new-form__connectivity, .new-form__description {
+.new-form__price, .new-form__image, .new-form__location, .new-form__locality, .new-form__property-type, .new-form__structure-type, .new-form__type, .new-form__area, .new-form__bedroom, .new-form__furnished, .new-form__floor, .new-form__amenities, .new-form__vicinity, .new-form__connectivity, .new-form__description, .new-form__img-delete {
   margin: 0 5%;
   margin-bottom: 1rem;
 }
@@ -2113,6 +2085,12 @@ section .social__about-page {
   grid-area: description;
 }
 
+.new-form__img-delete {
+  -ms-grid-row: 17;
+  -ms-grid-column: 1;
+  grid-area: img-delete;
+}
+
 .new-form__btn {
   display: inline-block;
   font-size: 1rem;
@@ -2127,7 +2105,7 @@ section .social__about-page {
   border-color: #fe4900;
   -webkit-transition: all 0.2s ease-in;
   transition: all 0.2s ease-in;
-  -ms-grid-row: 17;
+  -ms-grid-row: 18;
   -ms-grid-column: 1;
   grid-area: btn;
   width: -webkit-fit-content;
@@ -2151,6 +2129,12 @@ section .social__about-page {
   .new-form__btn {
     font-size: 1.6rem;
   }
+}
+
+.new-form__cancel {
+  -ms-grid-row: 19;
+  -ms-grid-column: 1;
+  grid-area: cancel;
 }
 
 @media (min-width: 575px) {
@@ -2187,15 +2171,14 @@ section .social__about-page {
   .new-form form {
     padding-left: 17rem;
     padding-right: 17rem;
-        grid-template-areas: 'heading heading' 'price location' 'locality structure-type' 'property-type type' 'area bedroom' 'furnished floor' 'image image' 'amenities amenities' 'vicinity vicinity' 'connectivity connectivity' 'description description' 'btn btn';
+        grid-template-areas: 'heading heading' 'price location' 'locality structure-type' 'property-type type' 'area bedroom' 'furnished floor' 'image image' 'amenities amenities' 'vicinity vicinity' 'connectivity connectivity' 'description description' 'img-delete img-delete' 'btn btn' 'cancel cancel';
   }
-  .new-form input,
-  .new-form textarea,
+  .new-form input:not(input[type='checkbox']),
   .new-form select,
   .new-form option {
     width: 36rem;
   }
-  .new-form__price, .new-form__image, .new-form__location, .new-form__locality, .new-form__property-type, .new-form__structure-type, .new-form__type, .new-form__area, .new-form__bedroom, .new-form__furnished, .new-form__floor, .new-form__amenities, .new-form__vicinity, .new-form__connectivity, .new-form__description {
+  .new-form__price, .new-form__image, .new-form__location, .new-form__locality, .new-form__property-type, .new-form__structure-type, .new-form__type, .new-form__area, .new-form__bedroom, .new-form__furnished, .new-form__floor, .new-form__amenities, .new-form__vicinity, .new-form__connectivity, .new-form__description, .new-form__img-delete {
     margin: 0;
     margin-bottom: 1rem;
   }
@@ -2209,6 +2192,41 @@ section .social__about-page {
   .new-form__btn {
     margin-top: 7rem;
   }
+}
+
+.edit-form__img-delete {
+  width: 74.6rem;
+  display: -ms-grid;
+  display: grid;
+  grid-gap: 2rem;
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: auto 15rem;
+}
+
+.edit-form__img-delete p {
+  grid-column: 1/-1;
+}
+
+.edit-form__img-delete label {
+  position: relative;
+}
+
+.edit-form__img-delete input {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  position: absolute;
+  z-index: 9;
+  top: 0.5rem;
+  left: 0.5rem;
+}
+
+.edit-form__img-delete img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .error-container {

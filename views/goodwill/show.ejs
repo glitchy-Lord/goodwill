@@ -6,6 +6,11 @@
 		<div class="img">
 			<img src="<%= listing.images[0].url %> " class="img__selected" alt="" />
 			<div class="img-slider">
+				<% if (listing.images.length > 1) { %>
+				<!-- <div class="arrow__container arrow__container-left"> -->
+				<img class="arrow arrow-left" src="/images/left-arrow.png" alt="" />
+				<!-- </div> -->
+				<% } %>
 				<div class="img-slider__container">
 					<% listing.images.forEach((img, i ) => { %>
 					<img
@@ -16,12 +21,9 @@
 					<% }) %>
 				</div>
 				<% if (listing.images.length > 1) { %>
-				<div class="arrow__container arrow__container-left">
-					<img class="arrow arrow-left" src="/images/left-arrow.png" alt="" />
-				</div>
-				<div class="arrow__container arrow__container-right">
-					<img class="arrow arrow-right" src="/images/right-arrow.png" alt="" />
-				</div>
+				<!-- <div class="arrow__container arrow__container-right"> -->
+				<img class="arrow arrow-right" src="/images/right-arrow.png" alt="" />
+				<!-- </div> -->
 				<% } %>
 			</div>
 		</div>

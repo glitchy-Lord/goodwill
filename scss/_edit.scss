@@ -1,0 +1,30 @@
+.edit-form__img-delete {
+	width: 74.6rem;
+	display: grid;
+	grid-gap: 2rem;
+	grid-template-columns: repeat(4, 1fr);
+	grid-auto-rows: auto 15rem;
+
+	p {
+		grid-column: 1/-1;
+	}
+
+	label {
+		position: relative;
+		// height: 15rem;
+	}
+
+	input {
+		width: fit-content;
+		position: absolute;
+		z-index: 9;
+		top: 0.5rem;
+		left: 0.5rem;
+	}
+
+	img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+}

@@ -197,8 +197,25 @@
 				>
 			</div>
 
+			<div class="new-form__img-delete edit-form__img-delete">
+				<p>Delete Images</p>
+				<% listing.images.forEach(function(img, i) { %>
+				<label for="image-<%= i %>">
+					<img src="<%= img.thumbnail %>" class="thumnail" alt="" />
+					<input
+						type="checkbox"
+						name="deleteImages[]"
+						id="image-<%= i %>"
+						value="<%= img.filename %>"
+					/>
+				</label>
+				<% }) %>
+			</div>
+
 			<button class="new-form__btn">Update Property</button>
-			<a href="/listings/<%= listing._id %> ">cancel</a>
+			<a class="new-form__cancel" href="/listings/<%= listing._id %> "
+				>cancel</a
+			>
 		</form>
 	</main>
 </div>
