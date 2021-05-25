@@ -2,10 +2,12 @@
 	width: 40%;
 	max-width: $desktop-md;
 	margin: auto;
-	min-height: 92vh;
+	// min-height: 92vh;
 	padding-top: 4rem;
-	padding-bottom: 4rem;
+	// padding-bottom: 4rem;
 	font-size: size(s);
+	box-shadow: 0 0 50px -10px black;
+	border-radius: 1.8rem;
 
 	form {
 		@include glass-bg;

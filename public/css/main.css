@@ -195,8 +195,9 @@ a {
   max-width: 1088px;
   min-height: 20rem;
   margin: auto;
-  -ms-grid-row-align: center;
-      align-self: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .footer .brand {
@@ -821,6 +822,7 @@ a {
   background: linear-gradient(#000000, #14213d, #119da4);
   position: relative;
   padding-top: 8vh;
+  min-height: 92vh;
 }
 
 #map {
@@ -2339,10 +2341,11 @@ section .social__about-page {
   width: 40%;
   max-width: 800px;
   margin: auto;
-  min-height: 92vh;
   padding-top: 4rem;
-  padding-bottom: 4rem;
   font-size: 2rem;
+  -webkit-box-shadow: 0 0 50px -10px black;
+          box-shadow: 0 0 50px -10px black;
+  border-radius: 1.8rem;
 }
 
 .register-form form {

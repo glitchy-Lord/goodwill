@@ -8,8 +8,10 @@ const map = new mapboxgl.Map({
 	zoom: 10, // starting zoom
 });
 
-// mapToken is already for access added above
+// to add map controls
+map.addControl(new mapboxgl.NavigationControl());
 
+// mapToken is already for access added above
 map.on('load', function () {
 	// Add a new source from our GeoJSON data and
 	// set the 'cluster' option to true. GL-JS will
