@@ -1,6 +1,7 @@
 // npm i express ejs mongoose ejs-mate method-override joi express-session connect-flash dotenv
 // npm i passport passport-local passport-local-mongoose // to authenticate
 // npm i multer cloudinary multer-storage-cloudinary // to upload images
+// npm i @mapboc/mapbox-sdk // for maps
 
 // if we are in development then require dotenv and add the variables defined in .env
 // add them to process.env in the node app

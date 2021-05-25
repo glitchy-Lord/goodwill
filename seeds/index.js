@@ -1,10 +1,24 @@
 // for seeding the database
+
+// if we are in development then require dotenv and add the variables defined in .env
+// add them to process.env in the node app
+if (process.env.NODE__ENV !== 'production') {
+	require('dotenv').config();
+}
+
 const mongoose = require('mongoose');
+
+const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding'); // we only need the geocoding services from mapbox
+const mapboxToken = process.env.MAPBOX_TOKEN; // mapbox token from the env file
+const geocoder = mbxGeocoding({ accessToken: mapboxToken }); // passing the mapbox token when we initialize a new mapbox geocoding intance
+
 // requiring the listing model
 const Listing = require('../models/listing');
 // cities and localities name for seeding
 const cities = require('./cities');
 const { places, descriptors } = require('./seedHelpers');
+// streets names for cluster map
+const { streets } = require('./streets');
 
 // connecting server to mongo database
 mongoose.connect('mongodb://localhost:27017/goodwill', {
@@ -25,8 +39,17 @@ const sample = (array) => array[Math.floor(Math.random() * array.length)];
 
 const seedDB = async () => {
 	await Listing.deleteMany({});
-	for (let i = 0; i < 20; i++) {
+	for (let i = 0; i < 50; i++) {
 		const random1000 = Math.floor(Math.random() * 1000);
+
+		const geoData = await geocoder
+			.forwardGeocode({
+				// forward meaning from location to lat and long coords
+				query: `${sample(streets)}`, // passing location
+				limit: 1, // limiting the result to one
+			})
+			.send(); // send the query
+		//
 		const prop = new Listing({
 			// randomizing the price
 			price: Math.floor(Math.random() * 1000000 + 1),
@@ -40,9 +63,21 @@ const seedDB = async () => {
 				},
 			],
 			// randomly selecting the city and state from the cities files
-			location: `${cities[random1000].city}, ${cities[random1000].state}`,
+			// location: `${cities[random1000].city}, ${cities[random1000].state}`,
+
+			// randomly selecting the street from the streets files
+			location: `${sample(streets)}`,
 			// randomly selecting the descriptors and places from the seedhelpers files
 			locality: `${sample(descriptors)} ${sample(places)}`,
+
+			// getting the coordinates out of the response in geoJSON and saving
+			geometry: geoData.body.features[0].geometry,
+
+			//
+			// geometry: {
+			// 	type: 'Point',
+			// 	coordinates: [],
+			// },
 			author: '60a1588f7764c004c8344f58',
 		});
 		await prop.save();

@@ -2,6 +2,10 @@
 const Listing = require('../models/listing'); // requiring the listing model
 const { cloudinary } = require('../cloudinary'); // require cloudinary object in the index file
 
+const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding'); // we only need the geocoding services from mapbox
+const mapboxToken = process.env.MAPBOX_TOKEN; // mapbox token from the env file
+const geocoder = mbxGeocoding({ accessToken: mapboxToken }); // passing the mapbox token when we initialize a new mapbox geocoding intance
+
 module.exports.index = async (req, res) => {
 	// find all the listings in the Listing collection
 	const listings = await Listing.find({});
@@ -18,8 +22,18 @@ module.exports.createListing = async (req, res) => {
 	// throw an ExpressError if there is no listing key in the req
 	// if (!req.body.listing) throw new ExpressError('Invalid listing data', 400);
 
+	const geoData = await geocoder
+		// forward meaning from location to lat and long coords
+		.forwardGeocode({
+			query: req.body.listing.location, // passing location
+			limit: 1, // limiting the result to one
+		})
+		.send(); // send the query
+
 	// making a new listing entry using the data filled in the new form
 	const listing = new Listing(req.body.listing);
+	// getting the coordinates out of the response in geoJSON and saving
+	listing.geometry = geoData.body.features[0].geometry;
 	// save the path and filename of the images to an array of objects
 	listing.images = req.files.map((f) => ({
 		url: f.path,
@@ -29,6 +43,7 @@ module.exports.createListing = async (req, res) => {
 	listing.author = req.user._id;
 	// saving the new listing
 	await listing.save();
+	console.log(listing);
 	// on success flash a message with the following
 	req.flash('success', 'Successfully added a new listing');
 	// redirecting to the new listing
@@ -68,6 +83,13 @@ module.exports.renderEditForm = async (req, res) => {
 };
 
 module.exports.updateListing = async (req, res) => {
+	const geoData = await geocoder
+		// forward meaning from location to lat and long coords
+		.forwardGeocode({
+			query: req.body.listing.location, // passing location
+			limit: 1, // limiting the result to one
+		})
+		.send(); // send the query
 	// deconstructing id from req.params
 	const { id } = req.params;
 	const listing = await Listing.findByIdAndUpdate(id, {
@@ -77,6 +99,9 @@ module.exports.updateListing = async (req, res) => {
 	const imgs = req.files.map((f) => ({ url: f.path, filename: f.filename }));
 	// add the path and filename of the new images to the array of objects
 	listing.images.push(...imgs); // spreading the array to save each as an object in the array
+	// getting the coordinates out of the response in geoJSON and saving
+	listing.geometry = geoData.body.features[0].geometry;
+	// saving changes
 	await listing.save();
 	// if there are images to be deleted
 	if (req.body.deleteImages) {
@@ -101,7 +126,12 @@ module.exports.updateListing = async (req, res) => {
 module.exports.deleteListing = async (req, res) => {
 	// deconstructing id from req.params
 	const { id } = req.params;
-	await Listing.findByIdAndDelete(id);
+	// find the listing by the id and delete it
+	const listing = await Listing.findByIdAndDelete(id);
+	// loop over all the images on this listing and destroy the images
+	for (let img of listing.images) {
+		await cloudinary.uploader.destroy(img.filename);
+	}
 	// on success flash a message with the following
 	req.flash('success', 'Successfully deleted a listing');
 	res.redirect('/listings');

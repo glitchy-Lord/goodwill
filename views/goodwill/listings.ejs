@@ -1,9 +1,7 @@
 <% layout('layout/boilerplate') %>
 
 <div class="bg-gradient">
-	<section id="map" class="navbar-intersection">
-		<img src="/images/map.jpg" alt="map" />
-	</section>
+	<div id="map" style="color: black" class="navbar-intersection"></div>
 
 	<%- include('../partials/flash') %>
 
@@ -69,10 +67,18 @@
 			<% for( let listing of listings ) { %>
 			<div class="card">
 				<div class="card__img--container">
+					<% if (listing.images.length) { %>
 					<img src="<%= listing.images[0].url %> " class="card__img" alt="" />
+					<% } else { %>
+					<img
+						src="https://res.cloudinary.com/goodwill-estate-agency/image/upload/v1621593008/Goodwill/no-image_xhmbpf.jpg"
+						alt="no-image"
+						class="card__img"
+					/>
+					<% } %>
 				</div>
 				<div class="card__container">
-					<div class="card__price"><%= listing.price %></div>
+					<div class="card__price">&#8377; <%= listing.price %></div>
 					<div class="card__location"><%= listing.location %></div>
 					<div class="card__subtitle">
 						<div class="card__bedroom"><%= listing.bedroom %> BHK</div>
@@ -89,3 +95,10 @@
 		</div>
 	</section>
 </div>
+
+<script>
+	const mapToken = '<%- process.env.MAPBOX_TOKEN %>'; // to pass the ejs variable to the javascript file
+	// make listings into JSON and wrapping them in features object as an array
+	const listings =  {features: <%- JSON.stringify(listings) %> }
+</script>
+<script src="/js/listingPageMap.js"></script>

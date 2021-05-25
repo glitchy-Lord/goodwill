@@ -248,3 +248,17 @@
 		}
 	}
 }
+
+.mapboxgl-popup .mapboxgl-popup-content {
+	padding: 10px 15px 15px;
+
+	a {
+		color: black;
+		font-weight: weight(semi-bold);
+	}
+
+	.mapboxgl-popup-close-button {
+		color: black;
+		font-size: size(s);
+	}
+}

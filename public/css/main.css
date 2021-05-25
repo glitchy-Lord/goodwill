@@ -1086,6 +1086,20 @@ a {
   }
 }
 
+.mapboxgl-popup .mapboxgl-popup-content {
+  padding: 10px 15px 15px;
+}
+
+.mapboxgl-popup .mapboxgl-popup-content a {
+  color: black;
+  font-weight: 600;
+}
+
+.mapboxgl-popup .mapboxgl-popup-content .mapboxgl-popup-close-button {
+  color: black;
+  font-size: 2rem;
+}
+
 .show-image {
   width: 90%;
   max-width: 1088px;

@@ -4,6 +4,8 @@
 	<%- include('../partials/flash') %>
 	<main class="show-image navbar-intersection">
 		<div class="img">
+			<!-- if there are images uploaded then display them -->
+			<% if (listing.images.length) { %>
 			<img src="<%= listing.images[0].url %> " class="img__selected" alt="" />
 			<div class="img-slider">
 				<% if (listing.images.length > 1) { %>
@@ -26,9 +28,17 @@
 				<!-- </div> -->
 				<% } %>
 			</div>
+			<% } else { %>
+			<!-- if images are not uploaded then display default -->
+			<img
+				src="https://res.cloudinary.com/goodwill-estate-agency/image/upload/v1621593008/Goodwill/no-image_xhmbpf.jpg"
+				alt="no-image"
+				class="img__selected"
+			/>
+			<% } %>
 		</div>
 		<div class="details">
-			<div class="details__price"><%= listing.price %></div>
+			<div class="details__price">&#8377; <%= listing.price %></div>
 			<div class="details__location"><%= listing.location %></div>
 			<div class="details__area">area: <%= listing.area %> SQ.FT.</div>
 			<div class="details__bedroom">bedroom: <%= listing.bedroom %> BHK</div>
