@@ -169,9 +169,10 @@ app.use((req, res, next) => {
 	next();
 });
 
+const port = process.env.PORT || 3000;
 // setting up the server
-app.listen(3000, () => {
-	console.log('listening on port 3000');
+app.listen(port, () => {
+	console.log(`listening on port ${port}`);
 });
 
 // app.get('/fakeuser', async (req, res) => {
