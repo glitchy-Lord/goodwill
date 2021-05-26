@@ -24,8 +24,6 @@ const LocalStrategy = require('passport-local'); // local strategy for authentic
 const mongoSanitize = require('express-mongo-sanitize'); // sanitize queries
 const helmet = require('helmet'); // middleware for manipulating http headers for security
 const MongoDBStore = require('connect-mongo'); // store session in mongo
-// const dbUrl = process.env.DB_URL; // db url for production
-const dbUrl = 'mongodb://localhost:27017/goodwill'; // db url for development
 
 const ExpressError = require('./utilities/ExpressError'); // for customizing error messages
 
@@ -37,7 +35,8 @@ const listingRoutes = require('./routes/listings');
 const userRoutes = require('./routes/users');
 
 // connecting server to mongo database
-// mongoose.connect('mongodb://localhost:27017/goodwill', {
+const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/goodwill';
+// db url for production // db url for development
 mongoose.connect(dbUrl, {
 	useNewUrlParser: true,
 	useCreateIndex: true,
@@ -115,11 +114,12 @@ app.use(
 		},
 	})
 );
-
+const secret = process.env.SECRET || 'thisshouldbeabettersecret';
+// db url for production // db url for development
 // new syntax from connect-mongo v4
 const store = MongoDBStore.create({
 	mongoUrl: dbUrl,
-	secret: 'thisshouldbeabettersecret',
+	secret,
 	touchAfter: 24 * 60 * 60, // resave session after 24 hours if there are no changes in it
 });
 
