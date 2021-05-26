@@ -3,6 +3,8 @@
 	<div class="error">
 		<h1 class="error__heading"><%= err.message %></h1>
 		<hr />
+		<% if (process.env.NODE_ENV !== 'production') { %>
 		<p class="error__details"><%= err.stack %></p>
+		<% } %>
 	</div>
 </section>

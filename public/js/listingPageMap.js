@@ -2,10 +2,10 @@ mapboxgl.accessToken = mapToken; // passing the mapToken that is defined in list
 const map = new mapboxgl.Map({
 	container: 'map', // container ID
 	style: 'mapbox://styles/mapbox/streets-v11', // style URL
-	// center: [72.883296, 19.061732], // starting position [lng, lat]
-	center: [-73.98513, 40.758896], // starting position [lng, lat]
-	// zoom: 12.5, // starting zoom
-	zoom: 10, // starting zoom
+	center: [72.883296, 19.061732], // starting position [lng, lat]
+	// center: [-73.98513, 40.758896], // starting position [lng, lat]
+	zoom: 12.5, // starting zoom
+	// zoom: 10, // starting zoom
 });
 
 // to add map controls

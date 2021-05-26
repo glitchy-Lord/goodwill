@@ -8,12 +8,12 @@ const catchAsync = require('../utilities/catchAsync'); // for catching errors
 
 // remove '/register' in production
 
-router
-	.route('/register')
-	// render register form
-	.get(users.renderRegister)
-	// register a new user
-	.post(catchAsync(users.register));
+// router
+// 	.route('/register')
+// 	// render register form
+// 	.get(users.renderRegister)
+// 	// register a new user
+// 	.post(catchAsync(users.register));
 
 router
 	.route('/login')
